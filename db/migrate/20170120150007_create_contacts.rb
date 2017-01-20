@@ -1,7 +1,7 @@
 class CreateContacts < ActiveRecord::Migration
   def change
     create_table :contacts do |t|
-      t.email :email
+      t.string :email
       t.text :message
 
       t.timestamps null: false
