@@ -15,11 +15,11 @@
  */
 
 #banner {
-  background: grey;
+  background: #222222;
   padding: 10px;
   border-bottom: 2px solid;
   font: small-caps 40px/40px "Times New Roman", serif;
-  color: red;
+  color: #ff0000;
   text-align: center;
 
   img {
@@ -37,7 +37,7 @@
 }
 
 #columns {
-  background: orange;
+  background: #9c9999;
 
   #main {
     margin-left: 17em;
@@ -49,7 +49,7 @@
     float: left;
     padding: 1em 2em;
     width: 13em;
-    background: orange;
+    background: #9c9999;
 
     form, div {
       display: inline;
@@ -64,8 +64,8 @@
       color: white;
 
       table {
-        border-top: 1px dotted #595;
-        border-bottom: 1px dotted #595;
+        border-top: 1px dotted #d09999;
+        border-bottom: 1px dotted #d09999;
         margin-bottom: 10px;
       }
     }
@@ -87,10 +87,10 @@
 
 .eshop_form {
   fieldset {
-    background: yellow;
+    background: #e6e2e2;
     legend {
-      color: blue;
-      background: orange;
+      color: #fe001e;
+      background: #9c9999;
       font-family: sans-serif;
       padding: 0.2em 1em;
     }
