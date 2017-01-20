@@ -21,10 +21,10 @@
         <% end %> 
       </div>  
       <ul>
-        <li><a href="http://www....">Home</a></li>
+        <li><a href="<%= store_url %>">Home</a></li>
         <li><a href="http://www..../faq">Questions</a></li>
         <li><a href="http://www..../news">News</a></li>
-        <li><a href="http://www..../contact">Contact</a></li>
+        <li><a href="<%= new_contact_url %>">Contact</a></li>
       </ul>
 
       <% if session[:user_id] %>
@@ -32,6 +32,8 @@
           <li><%= link_to 'Orders', orders_path %></li>
           <li><%= link_to 'Products', products_path %></li>
           <li><%= link_to 'Users', users_path %></li>
+          <li><%= link_to 'Contacts', contacts_path %></li>
+
         </ul>
         <%= button_to 'Logout', logout_path, method: :delete %>
       <% end %>
