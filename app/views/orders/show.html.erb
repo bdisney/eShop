@@ -28,25 +28,32 @@
 </p>
 <table class="table table-striped">
   <thead>
-    <th>Product id</th>
-    <th>Product title</th>
-    <th>Quantity</th>
-    <th>Price per one</th>
-    <th>Price</th>
+    <tr>
+      <th>Product id</th>
+      <th>Product title</th>
+      <th>Quantity</th>
+      <th>Price per one</th>
+      <th>Price</th>
+    </tr>
   </thead>
     <% @order.line_items.each do |details| %>
   <tbody>
-    <td><%= details.product_id %></td>
-    <td><%= details.product.title %></td>
-    <td><%= details.quantity %></td>
-    <td><%= details.price %></td>
-      <% price_per_sku = details.price * details.quantity%>
-    <td><%= details.price * details.quantity %></td>
+    <tr>
+      <td><%= details.product_id %></td>
+      <td><%= details.product.title %></td>
+      <td><%= details.quantity %></td>
+      <td><%= number_to_currency(details.price) %></td>
+      <td><%= number_to_currency(details.price * details.quantity) %></td>
+    </tr> 
     <% end %>
-    
+    <tr>
+      <td></td><td></td><td></td>
+        <td><strong>Total price:</strong></td>
+        <td><strong><%= number_to_currency(@order.total_price) %></strong></td>
+    </tr>  
   </tbody>
-
   </table>
+ 
   
 </p>
 <p><%= link_to 'Edit', edit_order_path(@order) %> |
