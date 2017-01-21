@@ -1,10 +1,9 @@
-
-
 <h1>Listing Orders</h1>
 
 <table>
   <thead>
     <tr>
+      <th>Created at</th>
       <th>Name</th>
       <th>Address</th>
       <th>Email</th>
@@ -16,6 +15,7 @@
   <tbody>
     <% @orders.each do |order| %>
       <tr>
+        <td><%= order.created_at.strftime("%F (%H:%M)") %></td>
         <td><%= order.name %></td>
         <td><%= order.address %></td>
         <td><%= order.email %></td>
