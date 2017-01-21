@@ -21,7 +21,7 @@ class ContactsControllerTest < ActionController::TestCase
       post :create, contact: { email: @contact.email, message: @contact.message }
     end
 
-    assert_redirected_to contact_path(assigns(:contact))
+    assert_redirected_to store_path
   end
 
   test "should show contact" do
@@ -32,11 +32,6 @@ class ContactsControllerTest < ActionController::TestCase
   test "should get edit" do
     get :edit, id: @contact
     assert_response :success
-  end
-
-  test "should update contact" do
-    patch :update, id: @contact, contact: { email: @contact.email, message: @contact.message }
-    assert_redirected_to contact_path(assigns(:contact))
   end
 
   test "should destroy contact" do
