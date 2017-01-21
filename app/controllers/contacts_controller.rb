@@ -5,7 +5,7 @@ class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.json
   def index
-    @contacts = Contact.all
+    @contacts = Contact.order('created_at desc')
   end
 
   # GET /contacts/1
@@ -29,10 +29,12 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       if @contact.save
+
         format.html { redirect_to store_url, notice: 'Thank you for your message!' }
         format.json { render :show, status: :created, location: @contact }
       else
         format.html { render :new }
+
         format.json { render json: @contact.errors, status: :unprocessable_entity }
       end
     end
