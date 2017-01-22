@@ -1,4 +1,21 @@
-<p id="notice"><%= notice %></p>
+<% if @product.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2ß>
+
+      <ul>
+      <% @product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<p>
+  <strong>Product image:</strong>
+<p>
+<p>
+  <%= image_tag(@product.image_url, class: 'list_image') %>
+</p>
 
 <p>
   <strong>Title:</strong>
@@ -20,5 +37,15 @@
   <%= @product.price %>
 </p>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<p>
+  <strong>Created at:</strong>
+  <%= @product.created_at.strftime("%F %H:%M") %>
+</p>
+
+<p>
+  <%= link_to 'Back to products', products_path, class: "btn btn-primary btn-sm active" %> 
+  <%= link_to 'Edit', edit_product_path, class: "btn btn-warning btn-sm active" %>
+  <%= link_to 'Destroy', @product, class: "btn btn-danger btn-sm active", method: :delete, data: { confirm: 'Are you sure' } %>
+</p>
+
+
