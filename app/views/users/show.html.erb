@@ -1,9 +1,18 @@
-
-
 <p>
   <strong>Name:</strong>
   <%= @user.name %>
 </p>
+<p>
+  <strong>Created at: </strong>
+  <%= @user.created_at.strftime("%F %H:%M") %>
+</p>
+<p>
+  <strong>Updated at: </strong>
+  <%= @user.updated_at.strftime("%F %H:%M") %>
+</p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<p>
+  <%= link_to 'Back to users', users_path, class: "btn btn-primary btn-sm active" %>
+  <%= link_to 'Edit', edit_user_path, class: "btn btn-warning btn-sm active" %>
+  <%= link_to 'Destroy', @user, class: "btn btn-danger btn-sm active", method: :delete, data: { confirm: 'Are you sure' } %>
+</p>
