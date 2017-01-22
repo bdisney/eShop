@@ -1,24 +1,41 @@
 <h1>Listing products</h1>
-<table>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Product image</th>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Created at</th>
+      <th class="text-right">Actions</th>
+    </tr>
+  </thead>
   <% @products.each do |product| %>
-      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+  <tbody>
+      <tr class="<%= cycle('success', 'info', 'active') %>">
           <td>
               <%= image_tag(product.image_url, class: 'list_image') %>
           </td>
-          <td class="list_description">
-              <dl>
-                  <dt><%= product.title %></dt>
-                  <dd><%= truncate(strip_tags(product.description),
-                      length: 80) %></dd>
-              </dl>
-          </td>
+          <td><%= product.id %></td>
+          <td><strong><%= product.title %></strong></td>
+          <td><%= truncate(strip_tags(product.description), length: 40) %></td>
+          <td><%= number_to_currency(product.price) %></td>
+          <td><%= product.created_at.strftime("%F %H:%M") %></td>
+
           <td class="list_actions">
-              <%= link_to 'Show', product %><br/>
-              <%= link_to 'Edit', edit_product_path(product) %><br/>
-              <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
-          </td> </tr>
-  <% end %>
+              <%= link_to 'Show', product, class: "btn btn-info btn-xs active", style: "width: 60px" %><br/>
+              <%= link_to 'Edit', edit_product_path(product), class: "btn btn-warning btn-xs active", style: "width: 60px" %><br/>
+              <%= link_to 'Destroy', product, class: "btn btn-danger btn-xs active", style: "width: 60px", method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td> 
+      </tr> 
+  <% end %> 
+  </tbody>
 </table>
 
 <br />
-<%= link_to 'New product', new_product_path %>
+
+  
+<%= link_to 'Back to store catalog', store_path, class: "btn btn-primary btn-sm active" %> 
+<%= link_to 'Add new product', new_product_path, class: "btn btn-success btn-sm active" %>
+ 
