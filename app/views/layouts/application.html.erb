@@ -21,6 +21,7 @@
     <%= image_tag("logo.png") %>
     <%= @page_title || "My Imaginarium e-Shop" %>
   </div>
+
   <div id="columns">
     <div id="side">
       <div id="cart">
@@ -47,10 +48,17 @@
         </ul>
         <%= button_to 'Logout', logout_path, method: :delete, class: "btn btn-primary btn-xs" %>
       <% end %>
+      
     </div>
     <div id="main">
+      <% if notice %>
+        <p id="notice"><%= notice %></p>
+      <% end %>
+
       <%= yield %>
+      
     </div>
   </div>
+
 </body>
 </html>
