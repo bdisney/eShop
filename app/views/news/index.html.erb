@@ -1,25 +1,72 @@
-<p id="notice"><%= notice %></p>
+<%= link_to 'Add New article', new_news_path, class: "btn btn-success btn-xs" %>
 
-<h1>Listing News</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
 
-  <tbody>
-    <% @news.each do |news| %>
-      <tr>
-        <td><%= link_to 'Show', news %></td>
-        <td><%= link_to 'Edit', edit_news_path(news) %></td>
-        <td><%= link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+  <div class="container marketing">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+      <div class="col-md-3">  
+        <h2>Оцени первым</h2>
+          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-md-3">
+        <h2>Heading</h2>
+          <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-md-3">
+        <h2>Heading</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+
+
+<!-- START THE FEATURETTES -->
+  <% @news.each_with_index do |article, index| %>
+    <% if index.odd?  %> 
+
+      <hr class="featurette-divider">
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading"><%= article.title %><span class="text-muted"> <%= article.sub_title %></span></h2>
+          <p class="lead"><%= article.body %></p>
+          <br />
+          <div class="list_actions">
+            <%= link_to 'Edit', edit_news_path(article), class: "btn btn-warning" %>
+            <%= link_to 'View details >>', article, class: "btn btn-default" %>
+            <%= link_to 'Destroy', article, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <%= image_tag(article.image_url, class: 'featurette-image img-responsive') %>
+        
+        </div>
+      </div>
+
+    <% else %>
+
+      <hr class="featurette-divider">
+      <div class="row featurette">
+        <div class="col-md-3">
+          <%= image_tag(article.image_url, class: 'featurette-image img-responsive') %> 
+        </div>
+        <div class="col-md-7">
+          <h2 class="featurette-heading"><%= article.title %><span class="text-muted"> <%= article.sub_title %></span></h2>
+          <p class="lead"><%= article.body %></p>
+          <br />
+          <div class="list_actions">
+            <%= link_to 'Edit', edit_news_path(article), class: "btn btn-warning" %>
+            <%= link_to 'View details >>', article, class: "btn btn-default" %>
+            <%= link_to 'Destroy', article, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New News', new_news_path %>
+  <% end %>
+      

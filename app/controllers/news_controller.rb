@@ -1,5 +1,8 @@
 class NewsController < ApplicationController
+
   before_action :set_news, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authorize
+
 
   # GET /news
   # GET /news.json
@@ -69,6 +72,6 @@ class NewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def news_params
-      params.fetch(:news, {})
+      params.require(:news).permit(:title, :sub_title, :image_url, :body)
     end
 end
