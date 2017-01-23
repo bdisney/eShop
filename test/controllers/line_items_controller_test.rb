@@ -5,10 +5,10 @@ class LineItemsControllerTest < ActionController::TestCase
     @line_item = line_items(:one)
   end
 
-  test "should get index" do
+  test "shouldn't get index" do
     get :index
-    assert_response :success
-    assert_not_nil assigns(:line_items)
+    
+    assert_redirected_to store_url
   end
 
   test "should get new" do
@@ -35,9 +35,10 @@ class LineItemsControllerTest < ActionController::TestCase
     end
   end
 
-  test "should show line_item" do
+  test "should't show line_item" do
     get :show, id: @line_item
-    assert_response :success
+    
+    assert_redirected_to store_url
   end
 
   test "should get edit" do
