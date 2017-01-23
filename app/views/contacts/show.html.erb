@@ -1,5 +1,5 @@
 <p>
-  <strong>Email:</strong>
+  <strong>Email from:</strong>
   <%= @contact.email %>
 </p>
 
@@ -8,5 +8,4 @@
   <%= @contact.message %>
 </p>
 
-<%= link_to 'Edit', edit_contact_path(@contact) %> |
-<%= link_to 'Back', contacts_path %>
+<%= link_to 'Back to contacts', contacts_path, class: "btn btn-primary btn-xs active" %>

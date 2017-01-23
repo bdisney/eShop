@@ -1,5 +1,5 @@
 class ContactsController < ApplicationController
-  before_action :set_contact, only: [:show, :edit, :update, :destroy]
+  before_action :set_contact, only: [:show, :destroy]
   skip_before_action :authorize, only: [:new, :create]
 
   # GET /contacts
@@ -20,6 +20,7 @@ class ContactsController < ApplicationController
 
   # GET /contacts/1/edit
   def edit
+    redirect_to contacts_url, notice: 'Sorry, you cant edit existing contacts.' 
   end
 
   # POST /contacts
