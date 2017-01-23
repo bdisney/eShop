@@ -1,22 +1,21 @@
-<div class="form-group">
+<div class="eshop_form">
   <% if flash[:alert] %>
     <p id="notice"><%= flash[:alert] %></p>
   <% end %>
-
   <%= form_tag do %>
-      <legend>Restricted area:</legend>
+    <fieldset>
+      <legend>Please Log In</legend>
       <div>
-        <%= label_tag :name, 'Login:' %>
-        <%= text_field :name, params[:name], class: "form-control", placeholder: "",  style: "width: 400px", autofocus: "" %>
+        <%= label_tag :name, 'Name:' %>
+        <%= text_field_tag :name, params[:name] %>
       </div>
       <div>
         <%= label_tag :password, 'Password:' %>
-        <%= password_field_tag :password, params[:password], class: "form-control", placeholder: "",  style: "width: 400px", autofocus: "" %>
+        <%= password_field_tag :password, params[:password] %>
       </div>
-      <br />
       <div>
-        <%= submit_tag "Login", class: "btn btn-default" %>
+        <%= submit_tag "Login" %>
       </div>
-    
+    </fieldset>
   <% end %>
 </div>
