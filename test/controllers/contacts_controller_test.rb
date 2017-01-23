@@ -29,9 +29,9 @@ class ContactsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get edit" do
+  test "shouldn't get edit" do
     get :edit, id: @contact
-    assert_response :success
+    assert_redirected_to contacts_path
   end
 
   test "should destroy contact" do
