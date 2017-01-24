@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users
+  
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  devise_for :users, controllers: {
+      sessions: 'users/sessions',
+      passwords: 'users/passwords',
+      registrations: 'users/registrations'
+  }
   resources :news
   resources :contacts
 #  controller :sessions do
