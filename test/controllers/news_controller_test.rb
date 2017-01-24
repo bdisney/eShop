@@ -3,6 +3,12 @@ require 'test_helper'
 class NewsControllerTest < ActionController::TestCase
   setup do
     @news = news(:one)
+      @update = {
+        title: 'First',
+        sub_title: 'Second',
+        body: 'Text',
+        image_url: 'Lorem.jpg'
+      }
   end
 
   test "should get index" do
@@ -18,7 +24,7 @@ class NewsControllerTest < ActionController::TestCase
 
   test "should create news" do
     assert_difference('News.count') do
-      post :create, news: {  }
+      post :create, news: @update
     end
 
     assert_redirected_to news_path(assigns(:news))
@@ -35,7 +41,7 @@ class NewsControllerTest < ActionController::TestCase
   end
 
   test "should update news" do
-    patch :update, id: @news, news: {  }
+    patch :update, id: @news, news: @update
     assert_redirected_to news_path(assigns(:news))
   end
 
