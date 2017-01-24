@@ -1,4 +1,21 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <div class="row featurette">
+    <div class="col-md-9">
+      <h2 class="featurette-heading"><%= @news.title %><span class="text-muted">
+      <%= @news.sub_title %></span></h2>      
+      <p class="lead"><%= @news.body %></p>
+      <p><i>Was added by Eshop <%= time_ago_in_words(@news.created_at) %> ago</i></p>
+      <br />
+      <div class="list_actions">
+        <%= link_to 'Edit', edit_news_path(@news), class: "btn btn-warning" %> 
+        <%= link_to 'Destroy', @news, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <%= image_tag(@news.image_url, class: 'featurette-image img-responsive') %>    
+    </div>
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_news_path(@news) %> |
 <%= link_to 'Back', news_index_path %>
