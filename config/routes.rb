@@ -1,12 +1,18 @@
 Rails.application.routes.draw do
+  
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  devise_for :users, controllers: {
+      sessions: 'users/sessions',
+      passwords: 'users/passwords',
+      registrations: 'users/registrations'
+  }
   resources :news
   resources :contacts
-  get 'admin' => 'admin#index'
-  controller :sessions do
-    get 'login' => :new
-    post 'login' => :create
-    delete 'logout' => :destroy
-  end
+#  controller :sessions do
+#    get 'login' => :new
+#    post 'login' => :create
+#    delete 'logout' => :destroy
+#  end
 
   resources :users
 

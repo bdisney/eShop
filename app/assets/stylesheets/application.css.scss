@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require toastr
  */
 
 
@@ -39,6 +40,7 @@
 
 #columns {
   background: #9c9999;
+  margin-top: 3.6em;
 
   #main {
     margin-left: 16em;
