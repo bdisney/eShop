@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
     redirect_to store_url, :alert => exception.message
   end
 
+
   #protected
     def authorize
       if request.format == Mime::HTML
