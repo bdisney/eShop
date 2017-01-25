@@ -6,10 +6,6 @@
       <p class="lead"><%= @news.body %></p>
       <p><i>Was added by Eshop <%= time_ago_in_words(@news.created_at) %> ago</i></p>
       <br />
-      <div class="list_actions">
-        <%= link_to 'Edit', edit_news_path(@news), class: "btn btn-warning" %> 
-        <%= link_to 'Destroy', @news, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
-      </div>
     </div>
     <div class="col-md-3">
       <%= image_tag(@news.image_url, class: 'featurette-image img-responsive') %>    
