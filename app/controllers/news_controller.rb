@@ -1,8 +1,11 @@
 class NewsController < ApplicationController
+  load_and_authorize_resource
 
   before_action :set_news, only: [:show, :edit, :update, :destroy]
     
   skip_before_action :authenticate_user!, :only => [:index, :show]
+
+  
 
 
   # GET /news
@@ -23,6 +26,7 @@ class NewsController < ApplicationController
 
   # GET /news/1/edit
   def edit
+    authorize! :edit, @news
   end
 
   # POST /news

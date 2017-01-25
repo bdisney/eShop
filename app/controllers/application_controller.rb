@@ -6,6 +6,12 @@ class ApplicationController < ActionController::Base
 
   before_action :authenticate_user!
 
+  check_authorization
+  
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to store_url, :alert => exception.message
+  end
+
   #protected
     def authorize
       if request.format == Mime::HTML

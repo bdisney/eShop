@@ -38,5 +38,20 @@ class Ability
     if user.supervisor_role?
       can :manage, User
     end
+    if user.user_role?
+        can :create, Cart
+        can :update, Cart
+        can :destroy, Cart
+
+        can :create, Order
+
+        can :read, News
+
+        can :create, Contact
+
+        can :create, LineItem
+        
+
+    end
   end
 end

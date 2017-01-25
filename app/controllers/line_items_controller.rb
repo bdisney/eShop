@@ -1,5 +1,7 @@
 class LineItemsController < ApplicationController
   include CurrentCart
+  load_and_authorize_resource except: :create
+  skip_authorization_check :only => :create
   skip_before_action :authenticate_user!, only: :create 
   before_action :set_cart, only: [:create]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
@@ -14,6 +16,7 @@ class LineItemsController < ApplicationController
   # GET /line_items/1.json
   def show
     redirect_to store_url, notice: 'Nothing interesting.'
+
   end
 
   # GET /line_items/new
