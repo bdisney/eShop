@@ -1,29 +1,40 @@
-<h2>Sign up</h2>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %><br /><br /><br />
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<div class="login flex-center" id="login_form">
+<!--Form with header-->
+  <div class="card">
+      <div class="card-block">
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "",  style: "width: 200px" %>
+          <!--Header-->
+          <div class="form-header blue-gradient">
+              <h3><i class="fa fa-user"></i> Register:</h3>
+          </div>
+
+          <!--Body-->
+          <div class="md-form">
+              <i class="fa fa-envelope prefix"></i>
+              <%= f.email_field :email, class: "form-control", id: "form2" %>
+              <label for="form2">Your email</label>
+          </div>
+
+          <div class="md-form">
+              <i class="fa fa-lock prefix"></i>
+              <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "form4" %>
+              <label for="form4">Your password</label>
+          </div>
+
+          <div class="text-center">
+              <button class="btn btn-indigo">Sign up</button>
+              <hr>
+              <fieldset class="form-group">
+                  <input type="checkbox" id="checkbox1">
+                  <label for="checkbox1">Subscribe me to the newsletter</label>
+              </fieldset>
+          </div>
+
+      </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "",  style: "width: 200px" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "",  style: "width: 200px" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up", class: "btn btn-success" %>
-  </div>
+</div>
 <% end %>
+<!--/Form with header-->
 
-<%= render "devise/shared/links" %>
