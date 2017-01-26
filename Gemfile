@@ -6,6 +6,9 @@ gem 'toastr-rails'
 gem 'remotipart'
 gem 'rails_admin'
 gem 'cancancan'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.3.3'
+end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.7.1'
 # Use sqlite3 as the database for Active Record

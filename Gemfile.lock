@@ -1,5 +1,6 @@
 GEM
   remote: https://rubygems.org/
+  remote: https://rails-assets.org/
   specs:
     actionmailer (4.2.7.1)
       actionpack (= 4.2.7.1)
@@ -111,6 +112,7 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.2.7.1)
       sprockets-rails
+    rails-assets-tether (1.4.0)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.8)
@@ -174,7 +176,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.0.4)
       execjs (>= 0.3.0, < 3)
-    warden (1.2.6)
+    warden (1.2.7)
       rack (>= 1.0)
     web-console (2.3.0)
       activemodel (>= 4.0)
@@ -194,6 +196,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   rails (= 4.2.7.1)
+  rails-assets-tether (>= 1.3.3)!
   rails_admin
   remotipart
   sass-rails (~> 5.0)
