@@ -1,92 +1,146 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>eShop</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+
+   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Material Design for Bootstrap</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/css/compiled.min.css" rel="stylesheet">
 
 </head>
-<body class='<%= controller.controller_name %>'>
 
- <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/">My Imaginarium eShop</a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-          <% if can? :manage, User %>
-            <li><a href="<%= rails_admin_path %>">Dashboard</a></li>
-          <% end %>
-          <% if user_signed_in? %>
-            <li><a href="<%= edit_user_registration_path %>">Profile</a></li>
-            <li><a href="#">Help</a></li>
-          <% end %>
-            <% if user_signed_in? %>       
-              <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.username %> (<%= current_user.email %>)<span class="caret"></span></a>
-              <ul class="dropdown-menu">
-              <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
-            
-              <li role="separator" class="divider"></li>
-              <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
-            <% else %>
-              <li><%= link_to 'Sign up', new_user_registration_path %></li>
-              <li><%= link_to 'Sign in', new_user_session_path %></li>
-            <% end%>
-            </ul>
-
-          </ul>
-        </div>
-      </div>
-    </div>
-
-  <div id="columns">
-    <div id="side">
-      <div id="cart">
-        <% if @cart %>
-          <%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
-            <%= render @cart %>
-          <% end %> 
-        <% end %> 
-      </div>  
-      <ul>
-        <li><a href="http://www..../home">Home</a></li>
-        <li><a href="http://www..../faq">Questions</a></li>
-        <li><a href="<%= news_index_path%>">News</a></li>
-        <li><a href="<%= new_contact_url %>">Contact</a></li>
-      </ul>
-
-      <% if session[:user_id] %>
-        <ul>
-          <li><%= link_to 'Orders', orders_path %></li>
-          <li><%= link_to 'Products', products_path %></li>
-          <li><%= link_to 'Users', users_path %></li>
-          <li><%= link_to 'Contacts', contacts_path %></li>
-
+<body class="hidden-sn mdb-skin">
+    <!--Double navigation-->
+    <header>
+        <!-- Sidebar navigation -->
+        <ul id="slide-out" class="side-nav sn-bg-1 custom-scrollbar">
+            <!-- Logo -->
+            <li>
+                <div class="logo-wrapper waves-light">
+                <p id="icon" style="text-shadow: rgb(48, 117, 165) 0px 0px 0px, rgb(49, 120, 169) 1px 1px 0px, rgb(50, 123, 173) 2px 2px 0px, rgb(51, 126, 177) 3px 3px 0px, rgb(52, 129, 181) 4px 4px 0px, rgb(54, 132, 185) 5px 5px 0px, rgb(55, 135, 189) 6px 6px 0px, rgb(56, 138, 194) 7px 7px 0px, rgb(57, 140, 198) 8px 8px 0px, rgb(58, 143, 202) 9px 9px 0px, rgb(60, 146, 206) 10px 10px 0px, rgb(61, 149, 210) 11px 11px 0px, rgb(62, 152, 214) 12px 12px 0px, rgb(63, 155, 218) 13px 13px 0px, rgb(64, 158, 223) 14px 14px 0px, rgb(66, 161, 227) 15px 15px 0px, rgb(67, 164, 231) 16px 16px 0px; font-size: 77px; color: rgb(255, 255, 255); height: 100px; width: 100px; line-height: 100px; border-radius: 0%; text-align: center; background-color: rgb(68, 167, 235);"> w </p>  
+                </div>
+            </li>
+            <!--/. Logo -->
+            <!--Social-->
+            <li>
+                <ul class="social">
+                    <li><a class="icons-sm fb-ic"><i class="fa fa-facebook"> </i></a></li>
+                    <li><a class="icons-sm pin-ic"><i class="fa fa-pinterest"> </i></a></li>
+                    <li><a class="icons-sm gplus-ic"><i class="fa fa-google-plus"> </i></a></li>
+                    <li><a class="icons-sm tw-ic"><i class="fa fa-twitter"> </i></a></li>
+                </ul>
+            </li>
+            <!--/Social-->
+            <!--Search Form-->
+            <li>
+                <form class="search-form" role="search">
+                    <div class="form-group waves-light">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                </form>
+            </li>
+            <!--/.Search Form-->
+            <!-- Side navigation links -->
+            <li>
+                <ul class="collapsible collapsible-accordion">
+                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-chevron-right"></i> Submit blog<i class="fa fa-angle-down rotate-icon"></i></a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li><a href="#" class="waves-effect">Submit listing</a>
+                                </li>
+                                <li><a href="#" class="waves-effect">Registration form</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-hand-pointer-o"></i> Instruction<i class="fa fa-angle-down rotate-icon"></i></a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li><a href="#" class="waves-effect">For bloggers</a>
+                                </li>
+                                <li><a href="#" class="waves-effect">For authors</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-eye"></i> About<i class="fa fa-angle-down rotate-icon"></i></a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li><a href="#" class="waves-effect">Introduction</a>
+                                </li>
+                                <li><a href="#" class="waves-effect">Monthly meetings</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-envelope-o"></i> Contact me<i class="fa fa-angle-down rotate-icon"></i></a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li><a href="#" class="waves-effect">FAQ</a>
+                                </li>
+                                <li><a href="#" class="waves-effect">Write a message</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <!--/. Side navigation links -->
+            <div class="sidenav-bg mask-strong"></div>
         </ul>
-        <%= button_to 'Logout', logout_path, method: :delete, class: "btn btn-primary btn-xs" %>
-      <% end %>
-      
-    </div>
-    <div id="main">
+        <!--/. Sidebar navigation -->
+        <!-- Navbar -->
+        <nav class="navbar fixed-top navbar-toggleable-md navbar-dark scrolling-navbar double-nav">
+            <!-- SideNav slide-out button -->
+            <div class="float-xs-left">
+                <a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-bars"></i></a>
+            </div>
+            <!-- Breadcrumb-->
+            <div class="breadcrumb-dn mr-auto">
+                <p>Wroom Wroom</p>
+            </div>
+            <ul class="nav navbar-nav nav-flex-icons ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" a href="<%= new_contact_path %>"><i class="fa fa-envelope"></i> <span class="hidden-sm-down">Contact</span>&ensp;</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"><i class="fa fa-comments-o"></i> <span class="hidden-sm-down">Support</span>&ensp;</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link"><i class="fa fa-user"></i> <span class="hidden-sm-down">Profile</span></a>
+                </li>
+                <% if user_signed_in? %>
+                <li class="nav-item">
+                    <a class="nav-link" a href="<%=destroy_user_session_path %>" data-method="DELETE"><i class="fa fa-power-off"></i> <span class="hidden-sm-down">Sign out</span></a>&ensp;</a>
+                </li>
+                <% else %>  
+                <li class="nav-item">
+                    <a class="nav-link" href="<%= new_user_registration_path%>""><i class="fa fa-user-plus"></i> <span class="hidden-sm-down">Sign up</span>&ensp;</a>
+                </li> 
+                <li class="nav-item">
+                    <a class="nav-link" href="<%= new_user_session_path%>"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Sign in</span></a>
+                </li>            
+            </ul>
+             <%end %>
+        </nav>
+        <!-- /.Navbar -->
+    </header>
+    <!--/.Double navigation-->
+    <!--Main layout-->
+    <main>
+    
+        <div class="container-fluid">
+           
     <% unless flash.empty? %>
      <script type="text/javascript">
           <% flash.each do |f| %>
@@ -101,9 +155,15 @@
 
       <%= yield %>
       
-    </div>
-  </div>
-  
-
+   
+        </div>
+    </main>
+    <!--/Main layout-->
+    <!-- SCRIPTS -->
+    <script type="text/javascript" src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/js/compiled.min.js"></script>
+    <script>
+    $(".button-collapse").sideNav();
+    </script>
 </body>
+
 </html>
