@@ -1,0 +1,119 @@
+<div class="container">
+ 
+        <div class="divider-new">
+            <h2 class="h2-responsive">Here should be name of category</h2>
+        </div>
+
+  
+  <!--Main layout-->
+        <div class="container">
+            <div class="row">
+
+                <!--Sidebar-->
+                <div class="col-lg-4">
+
+                    <div class="widget-wrapper">
+                        <h4>Categories:</h4>
+                        <br>
+                        <div class="list-group">
+                            <span><% Category.all.find_each do |category| %>
+                                <%= link_to category.name, products_path(category: category.id), class: "list-group-item" %></span>
+                            <% end %>
+                       
+                        </div>
+
+                        
+                    </div>
+                    <br />
+
+                    <div class="widget-wrapper">
+                        <h4>Subscription form:</h4>
+                        <br>
+                        <div class="card">
+                            <div class="card-block">
+                                <p><strong>Subscribe to our newsletter</strong></p>
+                                <p>Once a week we will send you a summary of the most useful news</p>
+                                <div class="md-form">
+                                    <i class="fa fa-user prefix"></i>
+                                    <input type="text" id="form1" class="form-control">
+                                    <label for="form1">Your name</label>
+                                </div>
+                                <div class="md-form">
+                                    <i class="fa fa-envelope prefix"></i>
+                                    <input type="text" id="form2" class="form-control">
+                                    <label for="form2">Your email</label>
+                                </div>
+                                <button class="btn btn-primary">Submit</button>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--/.Sidebar-->              
+
+              <!--Main column-->
+                <div class="col-lg-8">
+
+                    
+                    <br>
+                    <hr class="extra-margins">
+
+                    <!--Second row-->
+                    <div class="row">
+                    <% cache ['store', Product.latest] do %>
+                        <% @products.each_slice(3) do |array_of_3_products| %>
+                            <% cache ['entry', array_of_3_products] do %>
+                                <% array_of_3_products.each do |product| %>
+                                    <% product.title %>
+                        <!--First columnn-->
+                        <div class="col-lg-4">
+
+                            <!--Card-->
+                            <div class="card">
+
+
+                                <!--Card image-->
+                                <div class="view overlay hm-white-slight">
+                                    <%= image_tag(product.image_url, class: "img-fluid") %>
+
+                                   
+                                        <div class="mask"></div>
+                                    </a>
+                                </div>
+                                <!--/.Card image-->
+
+                                <!--Card content-->
+                                <div class="card-block">
+                                    <!--Title-->
+                                    <h4 class="card-title"><%= product.title %></h4>
+                                    <!--Text-->
+                                    <p class="card-text"><%= truncate(strip_tags(product.description), length: 50) %> </p>
+                                   
+                                    <span class="green-text price"><strong><%= number_to_currency(product.price) %></strong>
+                                    </span>
+                                    <a href="#" class="btn btn-primary"><i class= "fa fa-cart-plus" aria-hidden="true"></i> Add to cart</a>
+                                </div>
+                                <!--/.Card content-->
+
+                            </div>
+                            <!--/.Card-->
+                            <br />
+                        </div>
+                        <!--First columnn-->
+                        <% end %>
+                        <% end %>
+                        <% end %>
+                        <% end %>
+
+
+                    
+                    </div>
+                    <!--/.Second row-->
+
+                </div>
+                <!--/.Main column-->
+
+            </div>
+        </div>
+        <!--/.Main layout-->
