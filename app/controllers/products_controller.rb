@@ -5,7 +5,15 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    if params[:category]
+      @products = Product.where(category: params[:category]).all
+      
+      @category = Category.find(params[:category])
+
+    else
+      
+      redirect_to store_path
+    end
   end
 
   # GET /products/1
@@ -16,6 +24,7 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
+    
     @product = Product.new
   end
 
