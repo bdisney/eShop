@@ -6,7 +6,7 @@ class StoreController < ApplicationController
   
   def index
     @categories = Category.all.map{|c| [ c.name, c.id ] }
-    @category = Category.find_by_name('All')
+    @category = MainCategory.find_by_name('All')
     @products = Product.order(:title)
   end
 end
