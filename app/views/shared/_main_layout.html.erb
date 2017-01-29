@@ -75,12 +75,14 @@
 
                                 <!--Card image-->
                                 <div class="view overlay hm-white-slight">
-                                    <%= image_tag(product.image_url, class: "img-fluid") %>
+                                    <%= image_tag(product.image_url, class: "img-fluid")  %>
+                                    
 
-                                   
-                                        <div class="mask"></div>
+                                    <a>
+                                        <%= link_to '', product_path(:id => product.id), class: "mask" %>
                                     </a>
                                 </div>
+                                
                                 <!--/.Card image-->
 
                                 <!--Card content-->
