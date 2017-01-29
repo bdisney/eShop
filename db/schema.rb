@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170128143906) do
+ActiveRecord::Schema.define(version: 20170129144111) do
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -21,8 +21,15 @@ ActiveRecord::Schema.define(version: 20170128143906) do
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "product_id"
+    t.integer  "main_category_id"
+  end
+
+  create_table "categories_products", force: :cascade do |t|
+    t.integer "category_id"
+    t.integer "product_id"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -46,6 +53,13 @@ ActiveRecord::Schema.define(version: 20170128143906) do
   add_index "line_items", ["order_id"], name: "index_line_items_on_order_id"
   add_index "line_items", ["product_id"], name: "index_line_items_on_product_id"
 
+  create_table "main_categories", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "news", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
@@ -68,10 +82,20 @@ ActiveRecord::Schema.define(version: 20170128143906) do
     t.string   "title"
     t.text     "description"
     t.string   "image_url"
-    t.decimal  "price",       precision: 8, scale: 2
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.decimal  "price",            precision: 8, scale: 2
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.string   "category_id"
+    t.integer  "sub_category_id"
+    t.integer  "main_category_id"
+  end
+
+  create_table "sub_categories", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|
