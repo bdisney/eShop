@@ -1,17 +1,13 @@
 <div class="container">
- 
-        <div class="divider-new">
-            <h2 class="h2-responsive"><%=@category.name %></h2>
-        </div>
-
-  
-  <!--Main layout-->
+    <div class="divider-new">
+        <h2 class="h2-responsive"><%=@category.name %></h2>
+    </div>
+    <!--Main layout-->
         <div class="container">
             <div class="row">
-
-                <!--Sidebar-->
+            <!--Sidebar-->
                 <div class="col-lg-4">
-
+                <div class="sticky" style="width: 300px">
                     <div class="widget-wrapper">
                         <h4>Categories:</h4>
                         <br>
@@ -19,41 +15,26 @@
                             <span><% Category.all.find_each do |category| %>
                                 <%= link_to category.name, products_path(category: category.id), class: "list-group-item" %></span>
                             <% end %>
-                       
                         </div>
-
-                        
                     </div>
                     <br />
-
-                    <div class="widget-wrapper">
+                <div class="widget-wrapper">
+                    
                         <h4>Your shopping cart</h4>
                         <br>
                         <div class="card">
                             <div class="card-block">
-                                <div id="cart">
-                                    <%= render @cart %>
+                                <div id="side">
+                                    <div id="cart">
+                                        <%= render @cart %>
+                                    </div>
                                 </div>
-
-                                <p><strong>Subscribe to our newsletter</strong></p>
-                                <p>Once a week we will send you a summary of the most useful news</p>
-                                <div class="md-form">
-                                    <i class="fa fa-user prefix"></i>
-                                    <input type="text" id="form1" class="form-control">
-                                    <label for="form1">Your name</label>
-                                </div>
-                                <div class="md-form">
-                                    <i class="fa fa-envelope prefix"></i>
-                                    <input type="text" id="form2" class="form-control">
-                                    <label for="form2">Your email</label>
-                                </div>
-                                <button class="btn btn-primary">Submit</button>
-
                             </div>
                         </div>
                     </div>
-
                 </div>
+            </div>
+
                 <!--/.Sidebar-->              
 
               <!--Main column-->
@@ -74,12 +55,12 @@
                         <div class="col-lg-4">
 
                             <!--Card-->
-                            <div class="card">
+                            <div class="card hoverable">
 
 
                                 <!--Card image-->
-                                <div class="view overlay hm-white-slight">
-                                    <%= image_tag(product.image_url, class: "img-fluid")  %>
+                                <div class="view overlay hm-white-slight ">
+                                    <%= image_tag(product.image_url, class: "img-fluid ")  %>
                                     
 
                                     <a>
@@ -95,11 +76,11 @@
                                     <h4 class="card-title"><%= product.title %></h4>
                                     <!--Text-->
                                     <p class="card-text"><%= truncate(strip_tags(product.description), length: 50) %> </p>
-                                   
-                                    <span class="green-text price"><strong><%= number_to_currency(product.price) %></strong>
-                                    </span>
-                                    <%= button_to 'Add ro cart', line_items_path(product_id: product), class: 'btn btn-success',  style: "width: 60px", remote: true %>
-                                    <a href="" class="btn btn-primary"><i class= "fa fa-cart-plus" aria-hidden="true"></i> Add to cart</a>
+                                    <span class="green-text price"><strong><%= number_to_currency(product.price) %></strong></span>
+                                    <br/>
+                                    <div class="flex-center"> 
+                                        <%= button_to 'ADD TO CART', line_items_path(product_id: product), class: "btn btn-outline-info waves-effect btn-sm",  remote: true, role: "button", onclick: "toastr.success('Successfully added to cart!');" %>
+                                    </div>
                                 </div>
                                 <!--/.Card content-->
 
