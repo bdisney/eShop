@@ -17,3 +17,12 @@
 //= require toastr
 //= require_tree .
 
+
+$(function () {
+    $(".sticky").sticky({
+        topSpacing: 90
+        , zIndex: -0
+        , stopper: "#you_shall_not_pass"
+    });
+});
+
