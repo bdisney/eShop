@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
       redirect_to edit_user_registration_path, notice: 'Please input your details: '
     end
     if @cart.line_items.empty?
-        redirect_to store_url, notice: 'Your cart is empty'
+        redirect_to :back, notice: 'Your cart is empty'
         return
     end
     
