@@ -12,11 +12,42 @@
   <% end %>
   <div class="container">
       <div class="row">
-          <div class="col-lg-2">
-          </div>
-          <div class="col-lg-8">
+         
+          <div class="col-lg-12">
               <div class="card">
-                  <div class="card-block">
+                  <div class="card-block hoverable">
+                  <p class="text-center">Purchasing items: </p>
+                      <table class="table">
+                          <thead>
+                              <tr><th>#</th>
+                                  <th>Image</th>
+                                  <th>Title</th>
+                                  <th>Description</th>
+                                  <th>Price each</th>
+                                  <th>Qty</th>
+                                  <th>Amount</th>
+                              </tr>
+                          </thead>
+                          <%=%>
+                          <%  @cart.line_items.each_with_index do |item, index| %>
+                          <tbody>
+                              <tr>
+                                  <td><%= index + 1 %></td>
+                                  <td><%= image_tag(item.product.image_url, class: "img-fluid", style: "width: 60px")%></td>
+                                  <td><%= item.product.title %></td>
+                                  <td><%= truncate(strip_tags(item.product.description), length: 50) %></td>
+                                  <td><%= item.price %></td>
+                                  <td><%= item.quantity %></td>
+                                  <td><%= item.total_price %></td>
+                                 
+                                  <% end %>
+                              </tr>
+                              <tr><td></td><td></td><td></td><td></td><td></td>
+                                  <td><strong>Total:</strong></td>
+                                  <td><strong><%= number_to_currency(@cart.total_price) %></strong></td>
+                                  </tr>
+                          </tbody>
+                      </table>
                       <div class="md-form form-group">
                           <br />
                           <div class="md-form">
@@ -34,8 +65,10 @@
                               <%= f.email_field :email, class: "form-control", id: "form2" %>
                               <label for="form2">example@example.com</label>
                           </div>
-                          <%= f.select :pay_type, options_for_select(Order::PAYMENT_TYPES), {prompt: 'Select a payment method'}, {required: 'true', class: 'form-control'} %>
-                          <button type="submit" class="btn btn-primary btn-lg btn-block">Send Order</button>
+                          <div>
+                          <%= f.select :pay_type, options_for_select(Order::PAYMENT_TYPES), {prompt: 'Select a payment method'}, {required: 'true', class: 'form-control', style: "width: 250px"} %>
+                          </div>
+                          <button type="submit" class="btn btn-primary btn-lg btn-block">COMPLETE PURCHASE</button>
                       </div>
                       <br />
                   </div>
