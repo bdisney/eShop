@@ -10,29 +10,41 @@
       </ul>
     </div>
   <% end %>
- 
-  <div class="form-group">
-    <%= f.label :name %><br>
-    <%= f.text_field :name, class: "form-control", placeholder: "Enter your full name",  style: "width: 400px", autofocus: ""%>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_area :address, rows: 6, class: "form-control", placeholder: "Delivery address",  style: "width: 400px" %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.email_field :email, class: "form-control", placeholder: "example@example.com",  style: "width: 400px" %>
-  </div>
-  <div class="field">
-    <%= f.label :pay_type %><br>
-    <%= f.select :pay_type, Order::PAYMENT_TYPES, prompt: 'Select a payment method' %>
-  </div>
-  <br />
-
-
-
-
-  <div class="actions">
-    <%= f.submit 'Place order', class: "btn btn-success" %>
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-2">
+          </div>
+          <div class="col-lg-8">
+              <div class="card">
+                  <div class="card-block">
+                      <div class="md-form form-group">
+                          <br />
+                          <div class="md-form">
+                              <i class="fa  fa-user prefix"></i>
+                              <%= f.text_field :name, class: "form-control validate", id: "form91" %>
+                              <label for="form91" data-error="wrong" data-success="right">Type your full name</label>
+                          </div>
+                          <div class="md-form">
+                              <i class="fa fa-home prefix"></i>
+                              <%= f.text_area :address, class: "md-textarea", id: "form8" %>
+                              <label for="form8">Type your delivery address</label>
+                          </div>
+                          <div class="md-form">
+                              <i class="fa fa-envelope prefix"></i>
+                              <%= f.email_field :email, class: "form-control", id: "form2" %>
+                              <label for="form2">example@example.com</label>
+                          </div>
+                          <%= f.select :pay_type, options_for_select(Order::PAYMENT_TYPES), {prompt: 'Select a payment method'}, {required: 'true', class: 'form-control'} %>
+                          <button type="submit" class="btn btn-primary btn-lg btn-block">Send Order</button>
+                      </div>
+                      <br />
+                  </div>
+              </div>
+          </div>
+      </div>
   </div>
 <% end %>
+
+
+
+
