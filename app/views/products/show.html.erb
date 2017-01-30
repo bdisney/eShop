@@ -24,19 +24,6 @@
                 <div id="cart">
                   <%= render @cart %>
                 </div>
-                <p><strong>Subscribe to our newsletter</strong></p>
-                <p>Add something here</p>
-                <div class="md-form">
-                  <i class="fa fa-user prefix"></i>
-                  <input type="text" id="form1" class="form-control">
-                  <label for="form1">Your name</label>
-                </div>
-                <div class="md-form">
-                  <i class="fa fa-envelope prefix"></i>
-                  <input type="text" id="form2" class="form-control">
-                  <label for="form2">Your email</label>
-                </div>
-                <button class="btn btn-success waves-effect waves-light">Checkout</button>
               </div>
             </div>
           </div>
@@ -52,18 +39,25 @@
                 <!--Product-->
                   <div class="product-wrapper">
                     <!--Featured image-->
-                      <div class="view overlay hm-white-light z-depth-1-half">
-                        <%= image_tag(@product.image_url, class: 'img-fluid') %>
+                      <div class="view z-depth-1-half hm-zoom">
+                        <%= image_tag(@product.image_url, class: 'img-fluid ') %>
                           <div class="mask waves-effect waves-light">
                           </div>
                       </div>
                     <!--/.Featured image-->
                     <br>
                     <!--Product data-->
-                      <h3 class="price"><span class="tag green darken-2"><%= number_to_currency (@product.price) %></span></h3>
+                    <div class="row">
+                      <div class="col-lg-6">
+                      <br />
+                      <h3 class="price"><span class="text-success align-middle"><%= number_to_currency (@product.price) %></span></h3>
+                      </div>
+                        <div class="col-lg-6 text-right">  <%= button_to 'ADD TO CART', line_items_path(product_id: @product), class: "btn btn-outline-info waves-effect btn-sm ",  remote: true, role: "button", onclick: "toastr.success('Successfully added to cart!');" %>
+                        </div>
+                    </div>  
                       <h2 class="h2-responsive">Description</h2>
                       <hr>
-                      <p><%= @product.description %></p>
+                      <p><%= @product.description %></p> 
 
                       <ul class="rating inline-ul">
                                     <li><i class="fa fa-star amber-text"></i></li>
