@@ -1,70 +1,36 @@
+<!--Section: News-->
+<section class="section extra-margins text-center">
 
-<!-- Marketing messaging and featurettes
-  ================================================== -->
-  <!-- Wrap the rest of the page in another container to center all the content. -->
-
-  <div class="container-fluid">
-
-    <!-- Three columns of text below the carousel -->
+    <!--Section heading-->
+    <h1 class="section-heading">Section title</h1>
+    <!--Section description-->
+    <p class="section-description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <!--/Section description-->
+    
+    <!--Three articles row-->
+    <% @news.each_slice(3) do |array_of_3_article| %>
     <div class="row">
-      <div class="col-md-4">  
-        <h2>Be first</h2>
-          <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
-      <div class="col-md-4">
-        <h2>Be second</h2>
-          <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
-      <div class="col-md-4">
-        <h2>Be third</h2>
-          <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
-    </div><!-- /.row -->
- 
-
-
-
-<!-- START THE FEATURETTES -->
-  <% @news.each_with_index do |article, index| %>
-    <% if index.odd?  %> 
-
-      <hr class="featurette-divider">
-      <div class="row featurette">
-        <div class="col-md-9">
-          <h2 class="featurette-heading"><%= article.title %><span class="text-muted"> <%= article.sub_title %></span></h2>
-            
-          <p class="lead"><%= truncate(strip_tags(article.body), length: 140) %> &nbsp; <%= link_to 'View more details >>', article, class: "btn btn-default" %></p>
-          <p><i>Was added by Eshop <%= time_ago_in_words(article.created_at) %> ago</i></p>
-          <br />
+    <% array_of_3_article.each do |article| %>
+        <!--Article column-->
+        <div class="col-lg-4 col-md-6 mb-r">
+            <!--Featured image-->
+            <%= image_tag(article.image_url, class: 'view overlay hm-white-slight mb-2') %>
+            <a>
+                <div class="mask"></div>
+            </a>
+            <!--Excerpt-->
+            <a href="" class="cyan-text"><h5><i class="fa fa-map "></i>Adventure</h5></a>
+            <h4><%= article.title %></h4>
+            <p>by <a><strong>JUSTWatches</strong></a>, <%= time_ago_in_words(article.created_at) %> ago.</p>
+            <p><%= truncate(strip_tags(article.body), length: 240) %></p>
+            <%= link_to 'READ MORE', article, class: "btn btn-mdb" %>
         </div>
-        <div class="col-md-3">
-          <%= image_tag(article.image_url, class: 'featurette-image img-responsive') %>
-        
-        </div>
-      </div>
+        <!--/Article column-->
+        <% end %>
+        <% end %>
+    </div>
+    <!--/Articles row-->
+</section>
+<!--/Section: News-->
 
-    <% else %>
-
-      <hr class="featurette-divider">
-      <div class="row featurette">
-        <div class="col-md-3">
-          <%= image_tag(article.image_url, class: 'featurette-image img-responsive') %> 
-        </div>
-        <div class="col-md-9">
-          <h2 class="featurette-heading"><%= article.title %><span class="text-muted"> <%= article.sub_title %></span></h2>
-           <p class="lead"><%= truncate(strip_tags(article.body), length: 140) %> &nbsp; <%= link_to 'View more details >>', article, class: "btn btn-default" %></p>
-           <p><i>Was added by Eshop <%= time_ago_in_words(article.created_at) %> ago</i></p>
-          <br />
-        </div>
-      </div>
-    <% end %>
-  <% end %>
-  </div>
-
-
-
-  <%= link_to 'Add New article', new_news_path, class: "btn btn-success btn-xs" %>
       
