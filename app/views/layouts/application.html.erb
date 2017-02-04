@@ -139,10 +139,12 @@
             <ul class="nav navbar-nav nav-flex-icons ml-auto">
                 <% if user_signed_in?  %>
                 <li class="nav-item">
-                    <a class="nav-link"> <span class="badge red z-depth-1">
-                    <div class="cart_badge">
-                    <%= @cart.line_items.sum('quantity') %>
-                    </div></span> <i class="fa fa-shopping-cart"></i> <span class="hidden-sm-down">Cart</span></a>
+                    <a class="nav-link" href="<%= edit_cart_path(@cart) %>"> <span class="badge red z-depth-1">
+                    <div id="cart">
+                    <%= render :partial => 'carts/cart', :object => @cart %>
+                                       
+                                    </div>
+                    </span> <i class="fa fa-shopping-cart"></i> <span class="hidden-sm-down">Cart</span></a>
 
                 </li>
                 <% end %>
