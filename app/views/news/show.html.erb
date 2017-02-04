@@ -1,17 +1,47 @@
-<div class="container-fluid">
-  <div class="row featurette">
-    <div class="col-md-9">
-      <h2 class="featurette-heading"><%= @news.title %><span class="text-muted">
-      <%= @news.sub_title %></span></h2>      
-      <p class="lead"><%= @news.body %></p>
-      <p><i>Was added by Eshop <%= time_ago_in_words(@news.created_at) %> ago</i></p>
-      <br />
-    </div>
-    <div class="col-md-3">
-      <%= image_tag(@news.image_url, class: 'featurette-image img-responsive') %>    
-    </div>
-  </div>
-</div>
+<!--Section: Article-->
+<section class="section section-blog-fw">
 
-<%= link_to 'Edit', edit_news_path(@news) %> |
-<%= link_to 'Back', news_index_path %>
+    <!--First row-->
+    <div class="row">
+        <div class="col-md-12">
+            <!--Featured image-->
+            <%= image_tag(@news.image_url, class: 'view overlay hm-white-slight') %>
+            <a>
+                <div class="mask "></div>
+            </a>
+
+            <!--Article data-->
+            <div class="jumbotron">
+                <h2><a><%= @news.title %></a></h2>
+                <p>Added by <a>JUSTWatches</a>, <%= time_ago_in_words(@news.created_at) %> ago</p>
+
+                <!--Social shares-->
+                <div class="social-counters ">
+                    <!--Comments-->
+                    <a class="btn btn-default ">
+                        <i class="fa fa-comments-o left "></i>
+                        <span class="hidden-md-down ">Comments</span>
+                    </a>
+                    <span class="counter ">18</span>
+                </div>
+                <!--/.Social shares-->
+            </div>
+            <!--/Article data-->
+
+            <!--Excerpt-->
+            <div class="excerpt">
+                <p><%= @news.body %>
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--/First row-->
+
+    <hr>
+
+    Comments? <!--Think about it!-->
+
+    <hr>
+
+</section>
+<!--/Section: Article-->
