@@ -1,6 +1,67 @@
-<h1>Editing Cart</h1>
+<!--Shopping Cart table-->
+<div class="table-responsive">
+    <table class="table product-table">
+        <!--Table head-->
+        <thead>
+            <tr>
+                <th></th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>QTY</th>
+                <th>Amount</th>
+                <th></th>
+            </tr>
+        </thead>
+        <!--/Table head-->
 
-<%= render 'form' %>
+        <!--Table body-->
+        <tbody>
+            <% @cart.line_items.each do |item|%>
+            <!--row-->
+            <tr>
+                <th scope="row">
+                <div class="view">
+                    <%= image_tag(item.product.image_url, class: "img-fluid", alt: "") %> 
+                 
+                        <%= link_to '', product_path(:id => item.product.id), class: "mask" %>
+                   
+                </div>
+                   
+                </th>
+                <td>
+                    <h5><strong><%= item.product.title %></strong></h5>
+                    <p class="text-muted">by FifeSteps</p>
+                </td>
+             
+                <td><%= item.price %></td>
+                <td>
+                    <span class="qty"><%= item.quantity %></span>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-sm btn-primary btn-rounded">
+                            <input type="radio" name="options" id="option1">&mdash;
+                        </label>
+                        <label class="btn btn-sm btn-primary btn-rounded">
+                            <input type="radio" name="options" id="option2">+
+                        </label>
+                    </div>
+                </td>
+                <td><%= item.total_price %></td>
+                <td>
+                    <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Remove item">X
+                    </button>
+                </td>
+                <% end %>
+                <tr><td></td><td></td>
+                <td><h4><strong>Total:</strong></h4></td>
+                <td><h4><strong><%= number_to_currency(@cart.total_price) %></strong></h4></td>
+                <td colspan="3"><a href="<%= new_order_path %>"><button type="button" class="btn btn-primary">Complete purchase  <i class="fa fa-angle-right right"></i></button></a></td>
+                </tr>
+            </tr>
+            <!--row-->
+        </tbody>
+        <!--/Table body-->
+    </table>
+</div>
+<!--/Shopping Cart table-->
 
-<%= link_to 'Show', @cart %> |
-<%= link_to 'Back', carts_path %>
+
