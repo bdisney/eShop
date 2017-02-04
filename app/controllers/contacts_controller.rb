@@ -1,5 +1,7 @@
 class ContactsController < ApplicationController
+  include CurrentCart
   load_and_authorize_resource
+  before_action :set_cart
 
   before_action :set_contact, only: [:show, :destroy]
   skip_before_action :authenticate_user!, only: [:new, :create]
