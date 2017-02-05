@@ -1,7 +1,7 @@
 class LineItemsController < ApplicationController
   include CurrentCart
   load_and_authorize_resource except: :create
-  skip_authorization_check :only => :create
+  skip_authorization_check only: [:create, :destroy]
   skip_before_action :authenticate_user!, only: :create 
   before_action :set_cart, only: [:create]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
@@ -63,10 +63,17 @@ class LineItemsController < ApplicationController
   # DELETE /line_items/1
   # DELETE /line_items/1.json
   def destroy
+    @cart = current_cart
+    @line_item = @cart.remove_line_item(@cart.line_items.find(params[:id]))
     @line_item.destroy
-    respond_to do |format|
-      format.html { redirect_to line_items_url, notice: 'Line item was successfully destroyed.' }
+    if @cart.line_items.empty?
+      redirect_to store_url, notice: 'Your cart is now empty'
+    else
+      respond_to do |format|
+      format.html { redirect_to :back }
+      
       format.json { head :no_content }
+      end
     end
   end
 

@@ -47,8 +47,8 @@
                 </td>
                 <td><%= item.total_price %></td>
                 <td>
-                    <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Remove item">X
-                    </button>
+                    <%= link_to 'X', item, class: "btn btn-sm btn-primary", :method => :delete %>
+                    
                 </td>
                 <% end %>
                 <tr><td></td><td></td>
@@ -63,5 +63,6 @@
     </table>
 </div>
 <!--/Shopping Cart table-->
+
 
 
