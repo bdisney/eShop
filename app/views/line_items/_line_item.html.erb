@@ -3,9 +3,30 @@
 <% else %>
 <tr>
 <% end %>
-
-  <td><%= line_item.quantity %> &times; </td>
-  <td><%= line_item.product.title %></td>
-  <td class="item_price"><%= number_to_currency(line_item.total_price) %></td>
-  <td><%= @cart.line_items.sum('quantity') %> </td>
+    <td>
+        <div class="view">
+            <%= image_tag(line_item.product.image_url, class: "img-fluid", alt: "") %> 
+            <%= link_to '', product_path(:id => line_item.product.id), class: "mask" %>
+        </div>
+    </td>
+    <td>
+        <h5><strong><%= line_item.product.title %></strong></h5>
+    </td>
+    <td>
+        <%= line_item.price %>
+    </td>
+    <td>
+        <span class="qty"><%= line_item.quantity %></span>
+        <div class="btn-group" data-toggle="buttons">
+            <%= link_to '-', decrement_line_item_path(line_item), class: "btn btn-sm btn-primary btn-rounded", role: "button", remote: true %>
+            <%= link_to '+', increment_line_item_path(line_item), class: "btn btn-sm btn-primary btn-rounded", role: "button", remote: true %>
+        </div>
+    </td>
+ 
+    <td>
+        <%= number_to_currency(line_item.total_price) %>
+    </td>
+    <td>
+        <%= link_to 'X', line_item, class: "btn btn-sm btn-primary", :method => :delete %>
+    </td>
 </tr>

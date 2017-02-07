@@ -1,1 +1,22 @@
-<%= @cart.line_items.sum('quantity') %> 
+
+<div class="table-responsive">
+<table class="table product-table">
+<thead>
+            <tr>
+                <th></th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>QTY</th>
+                <th>Amount</th>
+                <th></th>
+            </tr>
+        </thead>
+   <%= render(cart.line_items) %>
+     <tr><td></td><td></td>
+                <td><h4><strong>Total:</strong></h4></td>
+                <td><h4><strong><%= number_to_currency(@cart.total_price) %></strong></h4></td>
+                <td colspan="3"><a href="<%= new_order_path %>"><button type="button" class="btn btn-primary">Complete purchase  <i class="fa fa-angle-right right"></i></button></a></td>
+                </tr>
+                </table>
+
+  </div>
