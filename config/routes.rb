@@ -9,12 +9,7 @@ Rails.application.routes.draw do
       registrations: 'users/registrations'
   }
 
-
-
   resources :users, only: [:show, :edit, :update]
-
-
-
 
   resources :news
   resources :contacts
