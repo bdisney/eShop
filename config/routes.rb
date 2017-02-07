@@ -8,6 +8,14 @@ Rails.application.routes.draw do
       passwords: 'users/passwords',
       registrations: 'users/registrations'
   }
+
+
+
+  resources :users, only: [:show, :edit, :update]
+
+
+
+
   resources :news
   resources :contacts
 #  controller :sessions do
@@ -16,11 +24,13 @@ Rails.application.routes.draw do
 #    delete 'logout' => :destroy
 #  end
 
-  resources :users
 
   resources :orders
 
-  resources :line_items
+  resources :line_items do
+    get 'decrement', on: :member
+    get 'increment', on: :member
+  end
 
   resources :carts
 
