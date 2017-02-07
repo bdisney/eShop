@@ -1,5 +1,13 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:create, :show, :destroy]
+  load_and_authorize_resource
+
+  
+  include CurrentCart
+  before_action :set_cart
+  
+  
 
   # GET /users
   # GET /users.json
@@ -28,8 +36,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to users_url, notice: "User '#{@user.name}' was successfully created." }
-        format.json { render :show, status: :created, location: @user }
+        format.html { render :show, notice: "User '#{@user.username}' was successfully created." }
+        format.json { }
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -42,8 +50,9 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to users_url, notice: "User '#{@user.name}' was successfully updated." }
-        format.json { render :show, status: :ok, location: @user }
+        sign_in(@user, :bypass => true)
+        format.html { redirect_to store_url, notice: "User '#{@user.username}' was successfully updated." }
+        format.json {  }
       else
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -56,7 +65,7 @@ class UsersController < ApplicationController
   def destroy
     begin
       @user.destroy
-      flash[:notice] = "User '#{@user.name}' deleted."
+      flash[:notice] = "User '#{@user.username}' deleted."
     rescue StandardError => e
       flash[:notice] = e.message
     end
@@ -74,6 +83,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :password, :password_confirmation)
+      params.require(:user).permit(:first_name, :second_name, :username, :email, :password, :password_confirmation)
     end
 end
