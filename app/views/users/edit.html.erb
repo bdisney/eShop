@@ -1,0 +1,65 @@
+<h2>Edit </h2>
+ <% if @user.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+    
+      <h4><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h4>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%= form_for(@current_user) do |f| %>
+
+
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, autofocus: true, class: "form-control", placeholder: "",  style: "width: 125px", autofocus: "" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :second_name %><br />
+    <%= f.text_field :second_name, autofocus: true, class: "form-control", placeholder: "",  style: "width: 125px", autofocus: "" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username, class: "form-control", style: "width: 125px" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, class: "form-control", placeholder: "",  style: "width: 250px"  %>
+  </div>
+
+  
+
+  <div class="field">
+    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "",  style: "width: 200px" %>
+    <% if @minimum_password_length %>
+      <br />
+      <em><%= @minimum_password_length %> characters minimum</em>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "",  style: "width: 200px" %>
+  </div>
+
+
+
+  <div class="actions">
+    <%= f.submit "Update", class: "btn btn-success" %>
+  </div>
+<% end %>
+
+<h3>Cancel my account</h3>
+
+<p>Unhappy? <%= button_to "Cancel my account",  user_registration_path, class: "btn btn-default", data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+<%= link_to "Back", :back %>
