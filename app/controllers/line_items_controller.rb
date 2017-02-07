@@ -3,7 +3,7 @@ class LineItemsController < ApplicationController
   load_and_authorize_resource except: :create
   skip_authorization_check only: [:create, :destroy]
   skip_before_action :authenticate_user!, only: :create 
-  before_action :set_cart, only: [:create]
+  before_action :set_cart, only: :create
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
   # GET /line_items
@@ -36,7 +36,7 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to store_url }
+        format.html { redirect_to :back }
         format.js { @current_item = @line_item }
         format.json { render :show, status: :created, location: @line_item }
       else
@@ -60,11 +60,58 @@ class LineItemsController < ApplicationController
     end
   end
 
+
+def increment
+  @cart = Cart.find(session[:cart_id])
+  @line_item = LineItem.find_by_id(params[:id])
+
+  # did it in the cart-model first, but that does not allow to redirect correctly
+  if @line_item.quantity >= 1
+    @line_item.quantity += 1
+    if @line_item.save
+      respond_to do |format|
+        format.html { redirect_to cart_url(@cart), notice: 'Line item was successfully decreased.' }
+        format.js { @current_item = @line_item }
+       format.json { head :ok }
+      end
+    end
+  else
+    # call the destroy-method and run all associated
+    LineItem.destroy(@line_item)
+  end
+end
+
+
+
+# POST /line_items
+# POST /line_items.json
+
+
+def decrement
+  @cart = Cart.find(session[:cart_id])
+  @line_item = LineItem.find_by_id(params[:id])
+
+  # did it in the cart-model first, but that does not allow to redirect correctly
+  if @line_item.quantity > 1
+    @line_item.quantity -= 1
+    if @line_item.save
+      respond_to do |format|
+        format.html { redirect_to cart_url(@cart), notice: 'Line item was successfully decreased.' }
+        format.js { @current_item = @line_item }
+       format.json { head :ok }
+      end
+    end
+  else
+    # call the destroy-method and run all associated
+    LineItem.destroy(@line_item)
+  end
+end
+
   # DELETE /line_items/1
   # DELETE /line_items/1.json
   def destroy
     @cart = current_cart
-    @line_item = @cart.remove_line_item(@cart.line_items.find(params[:id]))
+   
     @line_item.destroy
     if @cart.line_items.empty?
       redirect_to store_url, notice: 'Your cart is now empty'
@@ -87,4 +134,7 @@ class LineItemsController < ApplicationController
     def line_item_params
       params.require(:line_item).permit(:product_id)
     end
+
+    
+
 end
