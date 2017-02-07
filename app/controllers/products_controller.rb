@@ -2,6 +2,8 @@ class ProductsController < ApplicationController
   include CurrentCart
   before_action :set_cart
   load_and_authorize_resource
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
@@ -9,11 +11,8 @@ class ProductsController < ApplicationController
   def index
     if params[:category]
       @products = Product.where(category: params[:category]).all
-      
       @category = Category.find(params[:category])
-
     else
-      
       redirect_to store_path
     end
   end
