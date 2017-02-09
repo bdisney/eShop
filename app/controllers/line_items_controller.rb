@@ -2,7 +2,7 @@ class LineItemsController < ApplicationController
   include CurrentCart
   load_and_authorize_resource except: :create
   skip_authorization_check only: [:create, :destroy]
-  skip_before_action :authenticate_user!, only: :create 
+  skip_before_action :authenticate_user!, only: [:create, :increment, :decrement, :destroy] 
   before_action :set_cart, only: :create
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
@@ -112,7 +112,7 @@ end
   def destroy
     @cart = current_cart
    
-    @line_item.destroy
+    LineItem.destroy(@line_item)
     if @cart.line_items.empty?
       redirect_to store_url, notice: 'Your cart is now empty'
     else
