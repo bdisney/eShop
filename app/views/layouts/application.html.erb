@@ -137,17 +137,14 @@
             </div>
 
             <ul class="nav navbar-nav nav-flex-icons ml-auto">
-                <% if user_signed_in?  %>
+            <% if current_or_guest_user %>    
                 <li class="nav-item">
-                    <a class="nav-link" href="<%= edit_cart_path(@cart) %>"> <span class="badge red z-depth-1">
-                    <div id="cart">
-                    <%= render :partial => 'carts/cart', :object => @cart %>
-                                       
-                                    </div>
+                    <a class="nav-link" href="<%= edit_cart_path(@cart) %>"> <span class="badge red z-depth-1"><%= @cart.line_items.sum('quantity') %> 
+                   
                     </span> <i class="fa fa-shopping-cart"></i> <span class="hidden-sm-down">Cart</span></a>
 
                 </li>
-                <% end %>
+               <%end %>
                 <li class="nav-item">
                     <a class="nav-link" href="<%= new_contact_path %>"><i class="fa fa-envelope"></i> <span class="hidden-sm-down">Contact</span></a>
                 </li>
@@ -159,7 +156,7 @@
                 
                 <% if user_signed_in? %>
                     <li class="nav-item">
-                        <a class="nav-link" href="<%= edit_user_registration_path %>"><i class="fa fa-user"></i> <span class="hidden-sm-down">Profile</span></a>
+                        <a class="nav-link" href="<%= edit_user_path(current_user) %>"><i class="fa fa-user"></i> <span class="hidden-sm-down">Profile</span></a>
                     </li>
                     <li class="nav-item">
                         
