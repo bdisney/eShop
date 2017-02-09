@@ -15,8 +15,11 @@
      <tr><td></td><td></td>
                 <td><h4><strong>Total:</strong></h4></td>
                 <td><h4><strong><%= number_to_currency(@cart.total_price) %></strong></h4></td>
-                <td colspan="3"><a href="<%= new_order_path %>"><button type="button" class="btn btn-primary">Complete purchase  <i class="fa fa-angle-right right"></i></button></a></td>
+                <% if user_signed_in? %>
+                    <td colspan="3"><a href="<%= new_order_path %>"><button type="button" class="btn btn-primary">Complete purchase  <i class="fa fa-angle-right right"></i></button></a></td>
+                <% else %>
+                    <td colspan="3"><a href="<%= new_order_path %>"><button type="button" class="btn btn-primary">Please, Log in or sign up  <i class="fa fa-angle-right right"></i></button></a></td>
+                <% end %>
                 </tr>
                 </table>
-
   </div>
