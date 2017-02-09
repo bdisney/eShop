@@ -1,4 +1,3 @@
-<h2>Edit </h2>
  <% if @user.errors.any? %>
     <div class="alert alert-danger" role="alert">
     
@@ -14,52 +13,99 @@
 
 <%= form_for(@current_user) do |f| %>
 
+<section class="section">
 
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true, class: "form-control", placeholder: "",  style: "width: 125px", autofocus: "" %>
-  </div>
+    <!--Section heading-->
+    <h1 class="section-heading">Edit your details</h1>
+    <!--Section sescription-->
+    <p class="section-description mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur accusamus veniam. Quia, minima?</p>
 
-  <div class="field">
-    <%= f.label :second_name %><br />
-    <%= f.text_field :second_name, autofocus: true, class: "form-control", placeholder: "",  style: "width: 125px", autofocus: "" %>
-  </div>
+    <div class="row">
+        <!--First column-->
+        <div class="col-md-8">
+            <form>
+                <!--First row-->
+                <div class="row">
+                    <!--First column-->
+                    <div class="col-md-6">
+                        <div class="md-form">
+                            <div class="md-form">
+                                <%= f.text_field :first_name,  class: "form-control"%>
+                                <label for="form41" class="">First name</label>
+                            </div>
+                        </div>
+                    </div>
 
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username, class: "form-control", style: "width: 125px" %>
-  </div>
+                    <!--Second column-->
+                    <div class="col-md-6">
+                        <div class="md-form">
+                            <div class="md-form">
+                                 <%= f.text_field :second_name,  class: "form-control"%>
+                                <label for="form52" class="">Second name</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/.First row-->
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, class: "form-control", placeholder: "",  style: "width: 250px"  %>
-  </div>
+                <!--Second row-->
+                <div class="row">
+                    <!--First column-->
+                    <div class="col-md-6">
+                        <div class="md-form">
+                            <div class="md-form">
+                                <%= f.text_field :username,  class: "form-control"%>
+                                <label for="form41" class="">Username</label>
+                            </div>
+                        </div>
+                    </div>
 
-  
+                    <!--Second column-->
+                    <div class="col-md-6">
+                        <div class="md-form">
+                            <div class="md-form">
+                                <%= f.email_field :email,  class: "form-control"%>
+                                <label for="form52" class="">Email</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/Second row-->
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "",  style: "width: 200px" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
+                <!--Third row-->
+                  <div class="row">
+                      <!--First column-->
+                      <div class="col-md-6">
+                          <div class="md-form">
+                              <div class="md-form">
+                                  <%= f.password_field :password,  class: "form-control"%>
+                                  <label for="form41" class="">Password</label>
+                              </div>
+                          </div>
+                      </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "",  style: "width: 200px" %>
-  </div>
+                      <!--Second column-->
+                      <div class="col-md-6">
+                          <div class="md-form">
+                              <div class="md-form">
+                                   <%= f.password_field :password_confirmation,  class: "form-control"%>
+                                  <label for="form52" class="">Password confirmation</label>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                <!--/.Third row-->
+            </form>
 
+            <div class="center-on-small-only">
+                <div class="row">
+                    <%= f.submit 'UPDATE', class: "btn btn-outline-primary btn-rounded waves-effect" %>
+                    <p><%= button_to "Cancel my account",  user_registration_path, class: "btn btn-outline-danger btn-rounded waves-effect", data: { confirm: "Are you sure?" }, method: :delete %></p>
+                </div>
+            </div>
+        </div> 
+    </div>   
+    <br />
 
-
-  <div class="actions">
-    <%= f.submit "Update", class: "btn btn-success" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account",  user_registration_path, class: "btn btn-default", data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+  <% end %>
+</section>
