@@ -64,7 +64,9 @@ class Ability
     else
       can :create, User
       can :read, [News, Product]
-      can [:create, :edit, :update], [Cart, LineItem]
+      can [:manage], [Cart, LineItem]
+      cannot :read, [Cart, LineItem]
+      can :create, Order
     end 
   end
 end
