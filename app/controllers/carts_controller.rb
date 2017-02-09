@@ -1,27 +1,31 @@
 class CartsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:create, :update, :destroy]
-  load_and_authorize_resource
+  skip_before_action :authenticate_user!, only: [:edit, :update, :destroy ]
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
+  
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
 
   # GET /carts
   # GET /carts.json
   def index
-    @carts = Cart.all
+
   end
 
   # GET /carts/1
   # GET /carts/1.json
   def show
+
   end
 
   # GET /carts/new
   def new
     @cart = Cart.new
+    redirect_to @cart
   end
 
   # GET /carts/1/edit
   def edit
+    @cart = Cart.find(session[:cart_id])
   end
 
   # POST /carts
@@ -75,6 +79,7 @@ class CartsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def cart_params
       params.fetch(:cart, {})
+
     end
 
     def invalid_cart
