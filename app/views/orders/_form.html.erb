@@ -2,49 +2,50 @@
   <% if @order.errors.any? %>
     <div class="alert alert-danger" role="alert">
       <h2><%= pluralize(@order.errors.count, "error") %> prohibited this product from being saved:</h2ß>
-
       <ul>
-      <% @order.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+          <% @order.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
       </ul>
     </div>
   <% end %>
   <div class="container">
       <div class="row">
-         
           <div class="col-lg-12">
-              <div class="card">
-                  <div class="card-block hoverable">
-                      <div class="md-form form-group">
-                          <br />
-                          <div class="md-form">
-                              <i class="fa  fa-user prefix"></i>
-                              <%= f.text_field :name, class: "form-control validate", id: "form91" %>
-                              <label for="form91" data-error="wrong" data-success="right">Type your full name</label>
-                          </div>
-                          <div class="md-form">
-                              <i class="fa fa-home prefix"></i>
-                              <%= f.text_area :address, class: "md-textarea", id: "form8" %>
-                              <label for="form8">Type your delivery address</label>
-                          </div>
-                          <div class="md-form">
-                              <i class="fa fa-envelope prefix"></i>
-                              <%= f.email_field :email, class: "form-control", id: "form2" %>
-                              <label for="form2">example@example.com</label>
-                          </div>
-                          <div>
-                          <%= f.select :pay_type, options_for_select(Order::PAYMENT_TYPES), {prompt: 'Select a payment method'}, {required: 'true', class: 'form-control', style: "width: 250px"} %>
-                          </div>
-                          <button type="submit" class="btn btn-primary btn-lg btn-block">COMPLETE PURCHASE</button>
-                      </div>
-                      <br />
+              <div class="md-form form-group">
+                  <br />
+                  <div class="md-form">
+                      <i class="fa  fa-user prefix"></i>
+                      <%= f.text_field :name, class: "form-control validate", id: "form91" %>
+                      <label for="form91" data-error="wrong" data-success="right">Type your full name</label>
                   </div>
+                  <div class="md-form">
+                      <i class="fa fa-home prefix"></i>
+                      <%= f.text_area :address, class: "md-textarea", id: "form8" %>
+                      <label for="form8">Type your delivery address</label>
+                  </div>
+                  <div class="md-form">
+                      <i class="fa fa-envelope prefix"></i>
+                      <%= f.email_field :email, class: "form-control", id: "form2" %>
+                      <label for="form2">example@example.com</label>
+                  </div>
+                  <div>
+                      <%= f.select :pay_type, options_for_select(Order::PAYMENT_TYPES), {prompt: 'Select a payment method'}, {required: 'true', class: 'mdb-select colorful-select dropdown-primary', style: "width: 250px"} %>
+                  </div>
+                  <br />
+                  <button type="submit" class="btn btn-primary btn-lg btn-block">COMPLETE PURCHASE</button>
               </div>
           </div>
       </div>
   </div>
 <% end %>
+
+<script>
+    // Material Select Initialization
+    $(document).ready(function() {
+        $('.mdb-select').material_select();
+    });
+</script>
 
 
 
