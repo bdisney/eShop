@@ -1,6 +1,6 @@
 class Users::SessionsController < Devise::SessionsController
- 
-  
+include CurrentCart
+before_action :set_cart  
 skip_authorization_check
 # before_action :configure_sign_in_params, only: [:create]
 
@@ -10,9 +10,10 @@ skip_authorization_check
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+   def create
+     super
+     current_or_guest_user
+   end
 
   # DELETE /resource/sign_out
   # def destroy

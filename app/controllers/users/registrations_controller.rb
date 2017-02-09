@@ -11,9 +11,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+   def create
+     super
+     current_or_guest_user
+   end
 
   # GET /resource/edit
   def edit
@@ -54,7 +55,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-     edit_user_registration_path(resource)
+     store_index_path(resource)
   end
 
   def after_update_path_for(resource)
