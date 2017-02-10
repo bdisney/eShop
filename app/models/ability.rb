@@ -60,6 +60,8 @@ class Ability
       #Users
       can :crud, User
 
+      can :crud, Review
+
     #Guest user (not logged in)
     else
       can :create, User
