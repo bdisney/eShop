@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :reviews
   resources :main_categories
   resources :categories
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
@@ -33,6 +34,7 @@ Rails.application.routes.draw do
 
   resources :products do
     get :who_bought, on: :member
+    resources :reviews
   end
 
   #resources :products
