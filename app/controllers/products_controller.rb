@@ -21,6 +21,13 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @product = Product.find(params[:id])
+
+    @reviews = @product.reviews.to_a
+    @avg_rating = if @reviews.blank?
+      0
+    else
+      @product.reviews.average(:rating).round(2)
+    end
   end
 
   # GET /products/new
