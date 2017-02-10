@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.raty
 //= require jquery_ujs
 //= require turbolinks
 //= require tether
@@ -25,5 +26,6 @@ document.addEventListener("turbolinks:load", function() {
           , stopper: "#you_shall_not_pass"
       });
   });
+
 })
 
