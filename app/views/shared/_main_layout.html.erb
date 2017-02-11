@@ -47,14 +47,10 @@
                                 <h4 class="card-title"><a href=""><%= product.title %></a></h4>
 
                                 <!--Rating-->
-                                <ul class="rating">
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star-o"></i></li>
+                                <ul class="rating inline-ul">
+                                   <div class="star-rating" data-score=<%= product.reviews.average(:rating) %>  >
+                                   </div>
                                 </ul>
-
                                 <!--Description-->
                                 <p class="card-text">T<%= truncate(strip_tags(product.description), length: 50) %>
                                 </p>
@@ -524,6 +520,21 @@
 
             </section>
             <!--/Section: Products v.5-->
-
-
         </div>
+
+            <script>
+                $( document ).ready(function() {
+                    $('.star-rating').raty({
+                      number: '5',
+                      halfShow: true,
+                      starType: 'i',
+                      starOff: 'fa fa-star-o',
+                        starOn: 'fa fa-star',
+                        starHalf: 'fa fa-star-half-empty',
+                      readOnly: true,
+                      score: function() {
+                            return $(this).attr('data-score');
+                                        }
+                    });
+                }); 
+            </script>
