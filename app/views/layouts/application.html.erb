@@ -177,6 +177,8 @@
 
     <!--Main layout-->
     <main>
+        <div class="" id="top-section">
+        </div>
 
         <div id="main">
             <% unless flash.empty? %>
@@ -190,6 +192,13 @@
           
 
             <%= yield %>
+            <!--Back to the top-->
+            <div class="fixed-action-btn smooth-scroll" style="bottom: 45px; right: 24px;">
+                <a href="#top-section" class="btn-floating btn-large">
+                    <i class="fa fa-arrow-up"></i>
+                </a>
+            </div>
+            <!--/Back to the top-->
       
         </div>
         
