@@ -1,15 +1,14 @@
- <% if @user.errors.any? %>
-    <div class="alert alert-danger" role="alert">
-    
-      <h4><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h4>
-
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<div class="container">
+    <% if @user.errors.any? %>
+        <div class="alert alert-danger" role="alert">
+            <h4><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h4>
+            <ul>
+                <% @user.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
 
 <%= form_for(@current_user) do |f| %>
 
@@ -73,39 +72,65 @@
                 <!--/Second row-->
 
                 <!--Third row-->
-                  <div class="row">
-                      <!--First column-->
-                      <div class="col-md-6">
-                          <div class="md-form">
-                              <div class="md-form">
-                                  <%= f.password_field :password,  class: "form-control"%>
-                                  <label for="form41" class="">Password</label>
-                              </div>
-                          </div>
-                      </div>
+                <div class="row">
+                    <!--First column-->
+                    <div class="col-md-6">
+                        <div class="md-form">
+                            <div class="md-form">
+                                <%= f.password_field :password,  class: "form-control"%>
+                                <label for="form41" class="">Password</label>
+                            </div>
+                        </div>
+                    </div>
 
-                      <!--Second column-->
-                      <div class="col-md-6">
-                          <div class="md-form">
-                              <div class="md-form">
-                                   <%= f.password_field :password_confirmation,  class: "form-control"%>
-                                  <label for="form52" class="">Password confirmation</label>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
+                    <!--Second column-->
+                    <div class="col-md-6">
+                        <div class="md-form">
+                            <div class="md-form">
+                                <%= f.password_field :password_confirmation,  class: "form-control"%>
+                                <label for="form52" class="">Password confirmation</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <!--/.Third row-->
             </form>
-
-            <div class="center-on-small-only">
-                <div class="row">
-                    <%= f.submit 'UPDATE', class: "btn btn-outline-primary btn-rounded waves-effect" %>
-                    <p><%= button_to "Cancel my account",  user_registration_path, class: "btn btn-outline-danger btn-rounded waves-effect", data: { confirm: "Are you sure?" }, method: :delete %></p>
-                </div>
-            </div>
         </div> 
-    </div>   
+        <div class="col-md-4">
+            <ul class="text-center">
+                <li>
+                    <a class="media waves-light flex-center">
+                        <img class="rounded-circle" src="http://mdbootstrap.com/wp-content/uploads/2015/10/team-avatar-1.jpg" alt="Generic placeholder image">
+                    </a>
+                </li>
+                <li>
+                    <br />
+                </li>
+                <li>
+                    <p class="align-middle">Change default user picture: </p>
+                </li>
+                <li>
+                    <div class="file-field">
+                        
+                        <div class="file-path-wrapper">
+                            <input disabled class="file-path validate text-center" type="text" placeholder="Currently disabled ">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 flex-center">
+            <div class="center-on-small-only ">
+                <%= f.submit 'UPDATE', class: "btn btn-outline-primary btn-rounded waves-effect btn-sm" %>
+            </div>
+            <div class="center-on-small-only ">
+                <%= button_to "CANCEL MY ACCOUNT",  user_registration_path, class: "btn btn-outline-danger btn-rounded waves-effect btn-sm", data: { confirm: "Are you sure?" }, method: :delete %>
+            </div>
+        </div>
+    </div>
     <br />
-
   <% end %>
 </section>
+</div>
