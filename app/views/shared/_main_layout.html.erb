@@ -2,29 +2,21 @@
     <div class="divider-new">
         <h2 class="h2-responsive"><%=@category.name %></h2>
     </div>
-     
+    <div class="container-fluid">
+        <!--Section: Products -->
+        <section class="section">
 
-
-
-        <div class="container-fluid">
-
-     
-            <!--Section: Products v.1-->
-            <section class="section">
-
-                <!--Section heading-->
-                <h1 class="section-heading wow fadeIn" data-wow-delay="0.2s"></h1>
+            <!--Section heading-->
+            <h1 class="section-heading wow fadeIn" data-wow-delay="0.2s"></h1>
                 <!--Section sescription-->
-                <p class="section-description wow fadeIn" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur accusamus veniam. Quia, minima?</p>
+            <p class="section-description wow fadeIn" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur accusamus veniam. Quia, minima?</p>
 
-                <!--First row-->
-                <div class="row">
-                    <% cache ['store', Product.latest] do %>
-                        <% @products.each_slice(3) do |array_of_3_products| %>
-                            <% cache ['entry', array_of_3_products] do %>
-                                <% array_of_3_products.each do |product| %>
-                                    <% product.title %>
-
+            <!--First row-->
+            <div class="row">
+                <% cache ['store', Product.latest] do %>
+                    <% @products.each_slice(3) do |array_of_3_products| %>
+                        <% cache ['entry', array_of_3_products] do %>
+                            <% array_of_3_products.each do |product| %>
                     <!--First column-->
                     <div class="col-lg-4 col-md-6 mb-r wow fadeIn" data-wow-delay="0.2s">
 
@@ -52,7 +44,7 @@
                                    </div>
                                 </ul>
                                 <!--Description-->
-                                <p class="card-text">T<%= truncate(strip_tags(product.description), length: 50) %>
+                                <p class="card-text"><%= truncate(strip_tags(product.description), length: 50) %>
                                 </p>
 
                                 <!--Card footer-->
@@ -82,459 +74,68 @@
                         <% end %>
                         <% end %>
                         <% end %>
-                  
-
-                    
-
                 </div>
                 <!--/First row-->
 
-            </section>
-            <!--/Section: Products v.1-->
+        </section>
+        <!--/Section: Products-->
 
-            <hr class="between-sections">
+        <hr class="between-sections">
 
-            <!--Section: Products v.5-->
-            <section class="section">
+        <!--Section: Categories-->
+        <section class="section">
 
-                <!--Section heading-->
-                <h1 class="section-heading wow fadeIn" data-wow-delay="0.2s">Our bestsellers v.5</h1>
-                <!--Section sescription-->
-                <p class="section-description wow fadeIn" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur accusamus veniam. Quia, minima?</p>
+            <!--Section heading-->
+            <h1 class="section-heading wow fadeIn" data-wow-delay="0.2s">Watches categories</h1>
+            <!--Section description-->
+            <p class="section-description wow fadeIn" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur accusamus veniam. Quia, minima?</p>
 
+            <!--Row-->
+            <div class="row">
+                <% Category.all.find_each do |category| %>
+                    <!--Column-->
+                    <div class="col-lg-4 col-md-6 mb-r wow fadeInUp" data-wow-delay="0.2s">
+                        <!--Collection card-->
+                        <div class="card collection-card z-depth-1-half">
+                            <!--Card image-->
+                            <div class="view  hm-zoom">
+                                <%= image_tag(category.image_url, class: 'img-fluid')%>
+                                <div class="stripe light">
+                                    <a href="<%= products_path(category: category.id) %>">
+                                        <p><%= category.name %> <i class="fa fa-chevron-right"></i></p>
 
-                <!--Carousel Wrapper-->
-                <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
-
-                    <!--Controls-->
-                    <div class="controls-top">
-                        <a class="btn-floating btn-small primary-color" href="#multi-item-example" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
-                        <a class="btn-floating btn-small primary-color" href="#multi-item-example" data-slide="next"><i class="fa fa-chevron-right"></i></a>
+                                    </a>
+                                </div>
+                            </div>
+                            <!--/.Card image-->
+                        </div>
+                        <!--/.Collection card-->
                     </div>
-                    <!--/.Controls-->
-
-                    <!--Indicators-->
-                    <ol class="carousel-indicators">
-                        <li class="primary-color" data-target="#multi-item-example" data-slide-to="0" class="active"></li>
-                        <li class="primary-color" data-target="#multi-item-example" data-slide-to="1"></li>
-                        <li class="primary-color" data-target="#multi-item-example" data-slide-to="2"></li>
-                    </ol>
-                    <!--/.Indicators-->
-
-                    <!--Slides-->
-                    <div class="carousel-inner" role="listbox">
-
-                        <!--First slide-->
-                        <div class="carousel-item active">
-
-                            <div class="col-md-4">
-
-                                <!--Card-->
-                                <div class="card card-cascade narrower">
-
-                                    <!--Card image-->
-                                    <div class="view overlay hm-white-slight">
-                                        <img src="https://mdbootstrap.com/images/ecommerce/reg/reg%20(21).jpg" class="img-fluid" alt="">
-                                        <a>
-                                            <div class="mask"></div>
-                                        </a>
-                                    </div>
-                                    <!--/.Card image-->
-
-                                    <!--Card content-->
-                                    <div class="card-block text-center">
-                                        <!--Category & Title-->
-                                        <h5>Shoes</h5>
-                                        <h4 class="card-title"><a href="">White sneakers</a></h4>
-
-                                        <!--Description-->
-                                        <p class="card-text">Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates.
-                                        </p>
-
-                                        <!--Card footer-->
-                                        <div class="card-footer">
-                                            <span class="left">69$</span>
-                                            <span class="right">
-                                            <a class="" data-toggle="tooltip" data-placement="top" title="Quick Look"><i class="fa fa-eye"></i></a>
-                                            <a class="" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><i class="fa fa-heart"></i></a>
-                                            </span>
-                                        </div>
-
-                                    </div>
-                                    <!--/.Card content-->
-
-                                </div>
-                                <!--/.Card-->
-
-                            </div>
-
-                            <div class="col-md-4 hidden-sm-down">
-
-                                <!--Card-->
-                                <div class="card card-cascade narrower">
-
-                                    <!--Card image-->
-                                    <div class="view overlay hm-white-slight">
-                                        <img src="https://mdbootstrap.com/images/ecommerce/reg/reg%20(22).jpg" class="img-fluid" alt="">
-                                        <a>
-                                            <div class="mask"></div>
-                                        </a>
-                                    </div>
-                                    <!--/.Card image-->
-
-                                    <!--Card content-->
-                                    <div class="card-block text-center">
-                                        <!--Category & Title-->
-                                        <h5>Jeans</h5>
-                                        <h4 class="card-title"><a href="">Slim jeans</a></h4>
-
-                                        <!--Description-->
-                                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing minima veniam elit. Nam incidunt eius est voluptatibus.
-                                        </p>
-
-                                        <!--Card footer-->
-                                        <div class="card-footer">
-                                            <span class="left">99$</span>
-                                            <span class="right">
-                                <a class="" data-toggle="tooltip" data-placement="top" title="Quick Look"><i class="fa fa-eye"></i></a>
-                                <a class="" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><i class="fa fa-heart"></i></a>
-                                </span>
-                                        </div>
-
-                                    </div>
-                                    <!--/.Card content-->
-
-                                </div>
-                                <!--/.Card-->
-
-                            </div>
-
-                            <div class="col-md-4 hidden-sm-down">
-
-                                <!--Card-->
-                                <div class="card card-cascade narrower">
-
-                                    <!--Card image-->
-                                    <div class="view overlay hm-white-slight">
-                                        <img src="https://mdbootstrap.com/images/ecommerce/reg/reg%20(24).jpg" class="img-fluid" alt="">
-                                        <a>
-                                            <div class="mask"></div>
-                                        </a>
-                                    </div>
-                                    <!--/.Card image-->
-
-                                    <!--Card content-->
-                                    <div class="card-block text-center">
-                                        <!--Category & Title-->
-                                        <h5>Shorts</h5>
-                                        <h4 class="card-title"><a href="">Denim shorts</a></h4>
-
-                                        <!--Description-->
-                                        <p class="card-text">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur adipisci sed velit.
-                                        </p>
-
-                                        <!--Card footer-->
-                                        <div class="card-footer">
-                                            <span class="left">49$</span>
-                                            <span class="right">
-                                <a class="" data-toggle="tooltip" data-placement="top" title="Quick Look"><i class="fa fa-eye"></i></a>
-                                <a class="" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><i class="fa fa-heart"></i></a>
-                                </span>
-                                        </div>
-
-                                    </div>
-                                    <!--/.Card content-->
-
-                                </div>
-                                <!--/.Card-->
-
-                            </div>
-
-                        </div>
-                        <!--/.First slide-->
-
-                        <!--Second slide-->
-                        <div class="carousel-item">
-
-                            <div class="col-md-4">
-
-                                <!--Card-->
-                                <div class="card card-cascade narrower">
-
-                                    <!--Card image-->
-                                    <div class="view overlay hm-white-slight">
-                                        <img src="https://mdbootstrap.com/images/ecommerce/reg/reg%20(29).jpg" class="img-fluid" alt="">
-                                        <a>
-                                            <div class="mask"></div>
-                                        </a>
-                                    </div>
-                                    <!--/.Card image-->
-
-                                    <!--Card content-->
-                                    <div class="card-block text-center">
-                                        <!--Category & Title-->
-                                        <h5>Accessories</h5>
-                                        <h4 class="card-title"><a href="">Summer hat</a></h4>
-
-                                        <!--Description-->
-                                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing minima veniam elit. Nam incidunt eius est voluptatibus.
-                                        </p>
-
-                                        <!--Card footer-->
-                                        <div class="card-footer">
-                                            <span class="left">39$</span>
-                                            <span class="right">
-                                <a class="" data-toggle="tooltip" data-placement="top" title="Quick Look"><i class="fa fa-eye"></i></a>
-                                <a class="" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><i class="fa fa-heart"></i></a>
-                                </span>
-                                        </div>
-
-                                    </div>
-                                    <!--/.Card content-->
-
-                                </div>
-                                <!--/.Card-->
-
-                            </div>
-
-                            <div class="col-md-4 hidden-sm-down">
-
-                                <!--Card-->
-                                <div class="card card-cascade narrower">
-
-                                    <!--Card image-->
-                                    <div class="view overlay hm-white-slight">
-                                        <img src="https://mdbootstrap.com/images/ecommerce/reg/reg%20(30).jpg" class="img-fluid" alt="">
-                                        <a>
-                                            <div class="mask"></div>
-                                        </a>
-                                    </div>
-                                    <!--/.Card image-->
-
-                                    <!--Card content-->
-                                    <div class="card-block text-center">
-                                        <!--Category & Title-->
-                                        <h5>Shoes</h5>
-                                        <h4 class="card-title"><a href="">Black high heels</a></h4>
-
-                                        <!--Description-->
-                                        <p class="card-text">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur adipisci sed velit.
-                                        </p>
-
-                                        <!--Card footer-->
-                                        <div class="card-footer">
-                                            <span class="left">79$</span>
-                                            <span class="right">
-                                <a class="" data-toggle="tooltip" data-placement="top" title="Quick Look"><i class="fa fa-eye"></i></a>
-                                <a class="" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><i class="fa fa-heart"></i></a>
-                                </span>
-                                        </div>
-
-                                    </div>
-                                    <!--/.Card content-->
-
-                                </div>
-                                <!--/.Card-->
-
-                            </div>
-
-                            <div class="col-md-4 hidden-sm-down">
-
-                                <!--Card-->
-                                <div class="card card-cascade narrower">
-
-                                    <!--Card image-->
-                                    <div class="view overlay hm-white-slight">
-                                        <img src="https://mdbootstrap.com/images/ecommerce/reg/reg%20(31).jpg" class="img-fluid" alt="">
-                                        <a>
-                                            <div class="mask"></div>
-                                        </a>
-                                    </div>
-                                    <!--/.Card image-->
-
-                                    <!--Card content-->
-                                    <div class="card-block text-center">
-                                        <!--Category & Title-->
-                                        <h5>Outerwear</h5>
-                                        <h4 class="card-title"><a href="">Black jacket</a></h4>
-
-                                        <!--Description-->
-                                        <p class="card-text">Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates.
-                                        </p>
-
-                                        <!--Card footer-->
-                                        <div class="card-footer">
-                                            <span class="left">149$</span>
-                                            <span class="right">
-                                <a class="" data-toggle="tooltip" data-placement="top" title="Quick Look"><i class="fa fa-eye"></i></a>
-                                <a class="" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><i class="fa fa-heart"></i></a>
-                                </span>
-                                        </div>
-
-                                    </div>
-                                    <!--/.Card content-->
-
-                                </div>
-                                <!--/.Card-->
-
-                            </div>
-
-                        </div>
-                        <!--/.Second slide-->
-
-                        <!--Third slide-->
-                        <div class="carousel-item">
-
-                            <div class="col-md-4">
-
-                                <!--Card-->
-                                <div class="card card-cascade narrower">
-
-                                    <!--Card image-->
-                                    <div class="view overlay hm-white-slight">
-                                        <img src="https://mdbootstrap.com/images/ecommerce/reg/reg%20(35).jpg" class="img-fluid" alt="">
-                                        <a>
-                                            <div class="mask"></div>
-                                        </a>
-                                    </div>
-                                    <!--/.Card image-->
-
-                                    <!--Card content-->
-                                    <div class="card-block text-center">
-                                        <!--Category & Title-->
-                                        <h5>Accessories</h5>
-                                        <h4 class="card-title"><a href="">Gold earrings</a></h4>
-
-                                        <!--Description-->
-                                        <p class="card-text">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur adipisci sed velit.
-                                        </p>
-
-                                        <!--Card footer-->
-                                        <div class="card-footer">
-                                            <span class="left">29$</span>
-                                            <span class="right">
-                                <a class="" data-toggle="tooltip" data-placement="top" title="Quick Look"><i class="fa fa-eye"></i></a>
-                                <a class="" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><i class="fa fa-heart"></i></a>
-                                </span>
-                                        </div>
-
-                                    </div>
-                                    <!--/.Card content-->
-
-                                </div>
-                                <!--/.Card-->
-
-                            </div>
-
-                            <div class="col-md-4 hidden-sm-down">
-
-                                <!--Card-->
-                                <div class="card card-cascade narrower">
-
-                                    <!--Card image-->
-                                    <div class="view overlay hm-white-slight">
-                                        <img src="https://mdbootstrap.com/images/ecommerce/reg/reg%20(3).jpg" class="img-fluid" alt="">
-                                        <a>
-                                            <div class="mask"></div>
-                                        </a>
-                                    </div>
-                                    <!--/.Card image-->
-
-                                    <!--Card content-->
-                                    <div class="card-block text-center">
-                                        <!--Category & Title-->
-                                        <h5>Accessories</h5>
-                                        <h4 class="card-title"><a href="">Black leather belt</a></h4>
-
-                                        <!--Description-->
-                                        <p class="card-text">Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates.
-                                        </p>
-
-                                        <!--Card footer-->
-                                        <div class="card-footer">
-                                            <span class="left">89$</span>
-                                            <span class="right">
-                                <a class="" data-toggle="tooltip" data-placement="top" title="Quick Look"><i class="fa fa-eye"></i></a>
-                                <a class="" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><i class="fa fa-heart"></i></a>
-                                </span>
-                                        </div>
-
-                                    </div>
-                                    <!--/.Card content-->
-
-                                </div>
-                                <!--/.Card-->
-
-                            </div>
-
-                            <div class="col-md-4 hidden-sm-down">
-
-                                <!--Card-->
-                                <div class="card card-cascade narrower">
-
-                                    <!--Card image-->
-                                    <div class="view overlay hm-white-slight">
-                                        <img src="https://mdbootstrap.com/images/ecommerce/reg/reg%20(12).jpg" class="img-fluid" alt="">
-                                        <a>
-                                            <div class="mask"></div>
-                                        </a>
-                                    </div>
-                                    <!--/.Card image-->
-
-                                    <!--Card content-->
-                                    <div class="card-block text-center">
-                                        <!--Category & Title-->
-                                        <h5>Shoes</h5>
-                                        <h4 class="card-title"><a href="">Converse sneakers</a></h4>
-
-                                        <!--Description-->
-                                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing minima veniam elit. Nam incidunt eius est voluptatibus.
-                                        </p>
-
-                                        <!--Card footer-->
-                                        <div class="card-footer">
-                                            <span class="left">129$</span>
-                                            <span class="right">
-                                <a class="" data-toggle="tooltip" data-placement="top" title="Quick Look"><i class="fa fa-eye"></i></a>
-                                <a class="" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><i class="fa fa-heart"></i></a>
-                                </span>
-                                        </div>
-
-                                    </div>
-                                    <!--/.Card content-->
-
-                                </div>
-                                <!--/.Card-->
-
-                            </div>
-
-                        </div>
-                        <!--/.Third slide-->
-
-                    </div>
-                    <!--/.Slides-->
-
-                </div>
-                <!--/.Carousel Wrapper-->
-
-
-            </section>
-            <!--/Section: Products v.5-->
-        </div>
-
-            <script>
-                $( document ).ready(function() {
-                    $('.star-rating').raty({
-                      number: '5',
-                      halfShow: true,
-                      starType: 'i',
-                      starOff: 'fa fa-star-o',
-                        starOn: 'fa fa-star',
-                        starHalf: 'fa fa-star-half-empty',
-                      readOnly: true,
-                      score: function() {
-                            return $(this).attr('data-score');
-                                        }
-                    });
-                }); 
-            </script>
+                    <!--/Column-->
+                <% end %>
+            </div>
+            <!--/Row-->
+
+        </section>
+        <!--/Section: Categories-->
+
+        <hr class="between-sections">
+    </div>
+</div>
+
+<script>
+    $( document ).ready(function() {
+        $('.star-rating').raty({
+            number: '5',
+            halfShow: true,
+            starType: 'i',
+            starOff: 'fa fa-star-o',
+            starOn: 'fa fa-star',
+            starHalf: 'fa fa-star-half-empty',
+            readOnly: true,
+            score: function() {
+                return $(this).attr('data-score');
+            }
+        });
+    }); 
+</script>
