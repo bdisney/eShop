@@ -54,20 +54,12 @@
                 </ul>
             </li>
             <!--/Social-->
-            <!--Search Form-->
-            <li>
-                <form class="search-form" role="search">
-                    <div class="form-group waves-light">
-                        <input type="text" class="form-control" placeholder="Search">
-                    </div>
-                </form>
-            </li>
-            <!--/.Search Form-->
+         
             <!-- Side navigation links -->
 
             <li>
                 <ul class="collapsible collapsible-accordion">
-                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-heart"></i> All<i class="fa fa-angle-down rotate-icon"></i></a>
+                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-heart"></i> Catalogue<i class="fa fa-angle-down rotate-icon"></i></a>
                     <% Category.all.find_each do |category| %>
                         <div class="collapsible-body">
                             <ul>
@@ -76,39 +68,10 @@
                         </div>
                         <% end %>
                     </li>
-                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-diamond"></i> Brands<i class="fa fa-angle-down rotate-icon"></i></a>
-                        <div class="collapsible-body">
-                            <ul>
-                                <li><a href="#" class="waves-effect">Jewelry</a>
-                                </li>
-                                <li><a href="#" class="waves-effect">Wallets & Purses</a>
-                                </li>
-                            </ul>
-                        </div>
+              
+                    <li><a class="collapsible-header waves-effect arrow-r" href="/"><i class="fa  fa-book"></i> About JW</a>
                     </li>
-                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-gitlab"></i> Women<i class="fa fa-angle-down rotate-icon"></i></a>
-                        <div class="collapsible-body">
-                            <ul>
-                                <li><a href="#" class="waves-effect">Girls</a>
-                                </li>
-                                <li><a href="#" class="waves-effect">Boys</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-sun-o"></i> Men<i class="fa fa-angle-down rotate-icon"></i></a>
-                        <div class="collapsible-body">
-                            <ul>
-                                <li><a href="#" class="waves-effect">Swimsuits</a>
-                                </li>
-                                <li><a href="#" class="waves-effect">Sandals</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li><a class="collapsible-header waves-effect arrow-r" href="/"><i class="fa fa-sun-o"></i> About JUSTWatches</a>
-                    </li>
-                    <li><a class="collapsible-header waves-effect arrow-r" href="<%= news_index_path %>"><i class="fa fa-sun-o"></i> News</a>
+                    <li><a class="collapsible-header waves-effect arrow-r" href="<%= news_index_path %>"><i class="fa fa-globe"></i> News</a>
                     </li>
                     <li>
                         <div id="side">
@@ -150,7 +113,7 @@
                 </li>
                 <% if can? :manage, User %>
                     <li class="nav-item">
-                        <a class="nav-link" href="<%= rails_admin_path %>"><i class="fa fa-envelope"></i> <span class="hidden-sm-down">Dashboard</span></a>
+                        <a class="nav-link" href="<%= rails_admin_path %>"><i class="fa fa-dashboard"></i> <span class="hidden-sm-down">Dashboard</span></a>
                     </li>
                 <% end %>
                 
@@ -176,10 +139,7 @@
     <!--/Double navigation-->
 
     <!--Main layout-->
-    <main>
-        <div class="" id="top-section">
-        </div>
-
+    <main id="top-section">
         <div id="main">
             <% unless flash.empty? %>
                 <script type="text/javascript">
