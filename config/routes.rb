@@ -20,7 +20,8 @@ Rails.application.routes.draw do
 #    delete 'logout' => :destroy
 #  end
 
-
+  get "/pages/:page" => "pages#show"
+  
   resources :orders
 
   resources :line_items do
