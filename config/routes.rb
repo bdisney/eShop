@@ -19,8 +19,8 @@ Rails.application.routes.draw do
 #    post 'login' => :create
 #    delete 'logout' => :destroy
 #  end
-
-  get "/pages/:page" => "pages#show"
+  
+  get '/about' => 'pages#about'
   
   resources :orders
 
