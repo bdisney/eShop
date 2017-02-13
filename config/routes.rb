@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 #  end
   
   get '/about' => 'pages#about'
+  get '/faq' => 'pages#faq'
   
   resources :orders
 
