@@ -8,7 +8,7 @@
 
             <!--Section heading-->
             <h1 class="section-heading wow fadeIn" data-wow-delay="0.2s"></h1>
-                <!--Section sescription-->
+                <!--Section description-->
             <p class="section-description wow fadeIn" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur accusamus veniam. Quia, minima?</p>
 
             <!--First row-->
@@ -56,9 +56,8 @@
                                                 line_items_path(product_id: product), 
                                                 class: "",
                                                 remote: true,
-                                                onclick: "toastr.success('Successfully added to cart!');",
                                                 method: :post %></a>
-                                        <a class="" data-toggle="tooltip" data-placement="top" title="Added to Wishlist"><i class="fa fa-heart"></i></a>
+                                        <a class="disabled" data-toggle="tooltip" data-placement="top" title="Currently disabled"><i class="fa fa-heart"></i></a>
                                     </span>
                                 </div>
 
@@ -122,6 +121,7 @@
         <hr class="between-sections">
     </div>
 </div>
+
 
 <script>
     $( document ).ready(function() {
