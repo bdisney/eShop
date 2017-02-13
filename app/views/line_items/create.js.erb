@@ -1,8 +1,7 @@
 $('#notice').hide();
 
-
-
 $('#cart').html("<%= escape_javascript render(@cart) %>");
+$('#badge').html("<%=escape_javascript render(:partial => 'carts/badge') %>");
 
 
 
