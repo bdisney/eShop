@@ -38,6 +38,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem "rails_12factor", group: :production
 
 group :production do
   gem 'pg'
@@ -56,4 +57,6 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
+
+ruby "2.3.3"
 
