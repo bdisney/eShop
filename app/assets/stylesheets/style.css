@@ -1,1 +1,13 @@
 /* YOUR CUSTOM STYLES */
+
+html,
+body {
+  margin:0;
+  padding:0;
+  height:100%;
+}
+/* fix footer */
+#wrapper {
+  min-height:65%;
+  position:relative;
+}
