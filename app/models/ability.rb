@@ -41,6 +41,9 @@ class Ability
       #can do something, for example -> can :manage, User
     #User
     elsif user.user_role?
+        can :manage, :all
+      can :access, :rails_admin       # only allow admin users to access Rails Admin
+      can :dashboard  
       #add new contact
       can :create, Contact
 
