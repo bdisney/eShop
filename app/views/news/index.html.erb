@@ -19,7 +19,6 @@
                 <div class="mask"></div>
             </a>
             <!--Excerpt-->
-            <a href="" class="cyan-text"><h5><i class="fa fa-map "></i>Adventure</h5></a>
             <h4><%= article.title %></h4>
             <p>by <a><strong>JUSTWatches</strong></a>, <%= time_ago_in_words(article.created_at) %> ago.</p>
             <p><%= truncate(strip_tags(article.body), length: 240) %></p>

@@ -8,12 +8,13 @@ class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.json
   def index
-    @reviews = Review.all
+    redirect_to store_url
   end
 
   # GET /reviews/1
   # GET /reviews/1.json
   def show
+    redirect_to store_url
   end
 
   # GET /reviews/new
@@ -24,6 +25,7 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/1/edit
   def edit
+    
   end
 
   # POST /reviews

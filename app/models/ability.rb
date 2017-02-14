@@ -62,6 +62,8 @@ class Ability
 
       can :crud, Review
 
+     
+
     #Guest user (not logged in)
     else
       can :create, User
@@ -69,6 +71,7 @@ class Ability
       can [:manage], [Cart, LineItem]
       cannot :read, [Cart, LineItem]
       can :create, Order
+      cannot :create, Review
     end 
   end
 end

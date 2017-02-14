@@ -35,7 +35,7 @@
                               line_items_path(product_id: @product), 
                               class: "btn btn-primary btn-lg",
                               role: "button",
-                              onclick: "toastr.success('Successfully added to cart!');",
+                              remote: true,
                               method: :post %></a>
                 </div>
             </div>
