@@ -1,4 +1,4 @@
-<div class="table-responsive">
+<div class="table">
     <table class="table product-table">
         <thead>
             <tr>
@@ -10,7 +10,7 @@
                 <th></th>
                 </tr>
         </thead>
-        <%= render(cart.line_items) %>
+        <%= render(cart.line_items.sort_by(&:created_at)) %> 
         <tr>
             <td></td><td></td>
             <td><h4><strong>Total:</strong></h4></td>
