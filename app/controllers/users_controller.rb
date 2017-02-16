@@ -18,6 +18,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+  @user_orders = Order.where(user_id: current_user.id)
+
   end
 
   # GET /users/new
