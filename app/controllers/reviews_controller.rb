@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   include CurrentCart
-  before_action :set_cart  
+  before_action :set_cart
+  before_action :set_product 
   skip_before_action :authenticate_user!
   load_and_authorize_resource
   before_action :set_review, only: [:show, :edit, :update, :destroy]
@@ -19,20 +20,17 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/new
   def new
-    @product = Product.find(params[:product_id])
     @review = Review.new
   end
 
   # GET /reviews/1/edit
   def edit
-    
+    @review = Review.find(params[:id])
   end
 
   # POST /reviews
   # POST /reviews.json
   def create
-
-    @product = Product.find(params[:product_id])
     @review = @product.reviews.build(review_params)
     @review.user_id = current_user.id
 
@@ -52,7 +50,7 @@ class ReviewsController < ApplicationController
   def update
     respond_to do |format|
       if @review.update(review_params)
-        format.html { redirect_to @review, notice: 'Review was successfully updated.' }
+        format.html { redirect_to @product, notice: 'Review was successfully updated.' }
         format.json { render :show, status: :ok, location: @review }
       else
         format.html { render :edit }
@@ -75,6 +73,10 @@ class ReviewsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_review
       @review = Review.find(params[:id])
+    end
+
+    def set_product
+      @product = Product.find(params[:product_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
