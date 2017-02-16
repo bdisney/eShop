@@ -1,14 +1,18 @@
 <div class="container">   
 
     <div class="divider-new">
-        <h2 class="h2-responsive">Hello, stranger!</h2>
+        <% unless current_user.name? %>
+            <h2 class="h2-responsive">Hello, stranger!</h2>
+        <% else %>
+            <h2 class="h2-responsive">Hello, <%= current_user.name %>!</h2>
+        <% end %>
     </div>
     <!--First Row--> 
     <div class="row">
         <!-- First column-->
         <div class="col-md-4">
             <!--Card-->
-            <div class="card hoverable">
+            <div class="card hoverable" style="min-height: 400px">
                 <!--Card image-->
                 <div class="view overlay hm-white-slight">
                     <img src="https://static.pexels.com/photos/291762/pexels-photo-291762.jpeg" class="img-fluid" alt="">
@@ -26,7 +30,11 @@
                     <h4 class="card-title">Your cart</h4>
                     <hr>
                     <!--Text-->
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <% if @cart.line_items.empty? %>
+                        <p class="card-text">Your cart is empty.</p>
+                    <% else %>
+                        <p class="card-text"><%= pluralize(@cart.line_items.sum('quantity'), " amaizing product") %> currently added to your cart.</p>
+                    <% end %>
                 </div>
                 <!--/.Card content-->
             </div>
@@ -50,7 +58,7 @@
                 <!--/.Card image-->
 
                    <!--Button-->
-                <a class="btn-floating btn-action"><i class="fa fa-chevron-right"></i></a>
+                <a class="btn-floating btn-action" href="<%= edit_cart_path(@cart) %>"><i class="fa fa-chevron-right"></i></a>
                 <!--Card content-->
                 <div class="card-block">
                   
@@ -83,7 +91,7 @@
                 <!--/.Card image-->
 
                 <!--Button-->
-                <a class="btn-floating btn-action"><i class="fa fa-chevron-right"></i></a>
+                <a class="btn-floating btn-action" href="<%= edit_user_path(current_user) %>"><i class="fa fa-chevron-right"></i></a>
 
                 <!--Card content-->
                 <div class="card-block">
@@ -106,6 +114,7 @@
 
     <hr class="between-sections">
 
+    
     <!--Second Row--> 
     <div class="row">
         <!--Recent orders--> 
@@ -113,17 +122,51 @@
             <!--Panel-->
             <div class="card card-block">
                 <h4 class="card-title">Your Recent Orders</h4>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <div class="flex-row">
-                    <a class="card-link">Card link</a>
-                    <a class="card-link">Another link</a>
-                </div>
+                
+                <% if @user_orders.empty? %>
+                    <p class="text-muted">Holy guacamole! You haven't placed any orders yet!</p>
+                <% else %>
+                    <br />
+                    <div class="table">
+
+                        <table class="table product-table">
+                            <thead class="thead-inverse">
+                                <tr class="">
+                                    <th>#</th>
+                                    <th>Created date</th>
+                                    <th>Products & Qty</th>
+                                    <th>Total price</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <% @user_orders.each_with_index do |recent_order, index| %>
+                            <tbody>
+                                <tr>
+                                    <td><%= index + 1 %></td>
+                                    <td><%= recent_order.created_at.strftime("%F, %H:%M") %></td>
+                                    <td>
+                                        <ul>
+                                            <% recent_order.line_items.each do |line_item| %>
+                                            <li><%= line_item.product.title %> x <%= line_item.quantity %></li> 
+                                        <% end %>
+                                        </ul>
+                                    </td>
+                                    <td><%= number_to_currency(recent_order.line_items.to_a.sum { |item| item.total_price }) %></td>
+                                    <td><span class="green-text"><%= recent_order.status %></span></td>
+                                </tr>
+                                <% end %>
+                            </tbody>
+                        </table>
+                    </div>
+                <% end %>
+            
             </div>
             <!--/.Panel-->
         </div>
         <!--/Recent orders--> 
     </div>
     <!--/Second Row--> 
+    
 
     <br /> 
 
@@ -138,11 +181,36 @@
             <!--Panel-->
             <div class="card card-block">
                 <h4 class="card-title">Your product reviews</h4>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <div class="flex-row">
-                    <a class="card-link">Card link</a>
-                    <a class="card-link">Another link</a>
-                </div>
+                <% if @user_reviews.empty? %>
+                    <p class="text-muted">Here is empty, completely empty.</p>
+                <% else %>
+                    <br />
+                    <table class="table">
+                        <thead class="thead-inverse">
+                            <tr>
+                                <th>#</th>
+                                <th>Product</th>
+                                <th>Your review</th>
+                                <th>Rating</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% @user_reviews.each_with_index do |review, index| %>
+                                <tr>
+                                    <th scope="row"> <%= index + 1 %></th>
+                                    <td><%= review.product.title %></td>
+                                    <td><%= truncate(strip_tags(review.comment), length: 70) %></td>
+                                    <td><%= review.rating %></td>
+                                    <td>
+                                        <a class="blue-text" href="<%= product_path(review.product) %>"><i class="fa fa-eye"></i></a>
+                                        <a class="teal-text" href="<%= edit_product_review_path(id: review.id, product_id: review.product.id) %>"><i class="fa fa-pencil"></i></a>
+                                        <a class="red-text"><i class="fa fa-times"></i></a></td>
+                                </tr>
+                            <% end %>
+                        </tbody>
+                    </table>
+                <% end %>
             </div>
             <!--/.Panel-->
         </div>
@@ -153,5 +221,9 @@
     <br /> 
 
     <br /> 
+
+  
+
+    <a class="btn btn-mdb" href="<%= store_url %>">Continue shopping</a>
     
 </div>
