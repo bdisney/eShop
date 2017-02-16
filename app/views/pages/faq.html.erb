@@ -1,1 +1,56 @@
-Questions
+<div class="container">   
+
+    <div class="divider-new">
+        <h2 class="h2-responsive">Questions</h2>
+    </div>
+
+    <!--Jumbotron-->
+    <div class="jumbotron">
+        <h1 class="h1-responsive">Can i buy something here?</h1>
+        <p class="lead"></p>
+        <hr class="my-2">
+        <p class="text-muted"> Sure, you can! You can choose whatever you want on main page, click on cart image bellow product infromation and then complete purchase from your cart. But remember, this site isn't real shop. It's my ruby on rails learning project. </p>
+        <p>Thank you for your attention and participation!</p>
+        <p class="lead">
+            <a href="/" class="btn btn-primary btn-lg" role="button">Continue shoping</a>
+        </p>
+    </div>
+    <!--/.Jumbotron-->
+    <br />
+
+    <hr class="between-sections">
+
+    <!--Jumbotron-->
+    <div class="jumbotron">
+        <h1 class="h1-responsive">How can i get to my Cart?</h1>
+        <p class="lead"></p>
+        <hr class="my-2">
+        <p class="text-muted"> Juct click on link in navigation menu, or push button below this text. </p>
+        <p></p>
+        <p class="lead">
+            <a href="<%= edit_cart_path(@cart) %>" class="btn btn-primary btn-lg" role="button"><i class="fa fa-cart-plus" aria-hidden="true"></i> Your Cart</a>
+        </p>
+    </div>
+    <!--/.Jumbotron-->
+     <br />
+
+    <hr class="between-sections">
+
+      <!--Jumbotron-->
+    <div class="jumbotron">
+        <h1 class="h1-responsive">I don't have money. What should I do?</h1>
+        <p class="lead"></p>
+        <hr class="my-2">
+        <p class="text-muted"> No money - no honey!</p>
+        <p>Sorry :( </p>
+        <p class="lead">
+            <a href="<%= edit_cart_path(@cart) %>" class="btn btn-primary btn-lg" role="button"><i class="fa fa-cart-plus" aria-hidden="true"></i> Your Cart</a>
+        </p>
+    </div>
+    <!--/.Jumbotron-->
+     <br />
+
+    <hr class="between-sections">
+
+
+</div>

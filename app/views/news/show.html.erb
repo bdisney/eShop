@@ -1,32 +1,38 @@
-<!--Section: Article-->
-<section class="section section-blog-fw">
+<div class="container">
+    <div class="divider-new">
+        <h2 class="h2-responsive">News</h2>
+    </div>
 
-    <!--First row-->
-    <div class="row">
-        <div class="col-md-12">
-            <!--Featured image-->
-            <%= image_tag(@news.image_url, class: 'view overlay hm-white-slight') %>
-            <a>
-                <div class="mask "></div>
-            </a>
+    <!--Section: Article-->
+    <section class="section section-blog-fw">
 
-            <!--Article data-->
-            <div class="jumbotron">
-                <h2><a><%= @news.title %></a></h2>
-                <p>Added by <a>JUSTWatches</a>, <%= time_ago_in_words(@news.created_at) %> ago</p>
+        <!--First row-->
+        <div class="row">
+            <div class="col-md-12">
+                <!--Featured image-->
+                <%= image_tag(@news.image_url, class: 'view overlay hm-white-slight') %>
+                <a>
+                    <div class="mask "></div>
+                </a>
 
-            
-            </div>
-            <!--/Article data-->
+                <!--Article data-->
+                <div class="jumbotron">
+                    <h2><a><%= @news.title %></a></h2>
+                    <p>Added by <a>JUSTWatches</a>, <%= time_ago_in_words(@news.created_at) %> ago</p>
 
-            <!--Excerpt-->
-            <div class="excerpt">
-                <p><%= @news.body %>
-                </p>
+                
+                </div>
+                <!--/Article data-->
+
+                <!--Excerpt-->
+                <div class="excerpt">
+                    <p><%= @news.body %>
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
-    <!--/First row-->
+        <!--/First row-->
 
-</section>
-<!--/Section: Article-->
+    </section>
+    <!--/Section: Article-->
+</div>

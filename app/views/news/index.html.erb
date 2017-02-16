@@ -1,35 +1,38 @@
-<!--Section: News-->
-<section class="section extra-margins text-center">
-
-    <!--Section heading-->
-    <h1 class="section-heading">Section title</h1>
-    <!--Section description-->
-    <p class="section-description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <!--/Section description-->
-    
-    <!--Three articles row-->
-    <% @news.each_slice(3) do |array_of_3_article| %>
-    <div class="row">
-    <% array_of_3_article.each do |article| %>
-        <!--Article column-->
-        <div class="col-lg-4 col-md-6 mb-r">
-            <!--Featured image-->
-            <%= image_tag(article.image_url, class: 'view overlay hm-white-slight mb-2') %>
-            <a>
-                <div class="mask"></div>
-            </a>
-            <!--Excerpt-->
-            <h4><%= article.title %></h4>
-            <p>by <a><strong>JUSTWatches</strong></a>, <%= time_ago_in_words(article.created_at) %> ago.</p>
-            <p><%= truncate(strip_tags(article.body), length: 240) %></p>
-            <%= link_to 'READ MORE', article, class: "btn btn-mdb" %>
-        </div>
-        <!--/Article column-->
-        <% end %>
-        <% end %>
+<div class="container">
+    <div class="divider-new">
+        <h2 class="h2-responsive">News</h2>
     </div>
-    <!--/Articles row-->
-</section>
-<!--/Section: News-->
+
+    <!--Section: News-->
+    <section class="section extra-margins text-center">
+        <!--Section description-->
+        <p class="section-description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <!--/Section description-->
+        
+        <!--Three articles row-->
+        <% @news.each_slice(3) do |array_of_3_article| %>
+        <div class="row">
+        <% array_of_3_article.each do |article| %>
+            <!--Article column-->
+            <div class="col-lg-4 col-md-6 mb-r">
+                <!--Featured image-->
+                <%= image_tag(article.image_url, class: 'view overlay hm-white-slight mb-2') %>
+                <a>
+                    <div class="mask"></div>
+                </a>
+                <!--Excerpt-->
+                <h4><%= article.title %></h4>
+                <p class="text-muted">added by <a><strong>JUSTWatches</strong></a>, <%= time_ago_in_words(article.created_at) %> ago.</p>
+                <p><%= truncate(strip_tags(article.body), length: 240) %></p>
+                <%= link_to 'READ MORE', article, class: "btn btn-mdb" %>
+            </div>
+            <!--/Article column-->
+            <% end %>
+            <% end %>
+        </div>
+        <!--/Articles row-->
+    </section>
+    <!--/Section: News-->
+</div>
 
       
