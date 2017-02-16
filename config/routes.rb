@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  
-  resources :reviews
+ 
   resources :main_categories
   resources :categories
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
