@@ -191,10 +191,9 @@
                 <div class="col-md-2 offset-md-1">
                     <h5 class="title">USEFUL LINKS</h5>
                     <ul>
-                        <li><a href="#!">News</a></li>
-                        <li><a href="#!">Catalogue</a></li>
-                        <li><a href="#!">Your Cart</a></li>
-                        <li><a href="#!">Your account</a></li>
+                        <li><a href="<%= news_index_path %>">News</a></li>
+                        <li><a href="<%= edit_cart_path(@cart) %>">Your Cart</a></li>
+                        <li><a href="<%= user_path(current_user) %>">Your Account</a></li>
                     </ul>
                 </div>
                 <!--/.Second column-->
@@ -207,7 +206,7 @@
                     <ul>
                         <li><a href="#!">Store Delivery</a></li>
                         <li><a href="#!">Delivery Terms & Conditions</a></li>
-                        <li><a href="#!">Tracking</a></li>
+                      
                     </ul>
                 </div>
                 <!--/.Third column-->
@@ -218,8 +217,8 @@
                 <div class="col-md-2">
                     <h5 class="title">NEED HELP?</h5>
                     <ul>
-                        <li><a href="#!">Questions</a></li>
-                        <li><a href="#!">Contact Us</a></li>
+                        <li><a href="<%= faq_path %>">Questions</a></li>
+                        <li><a href="<%= new_contact_path %>">Contact Us</a></li>
                     </ul>
                 </div>
                 <!--/.Fourth column-->
@@ -273,6 +272,7 @@
 
     <!-- JQuery -->
     <%= javascript_include_tag 'jquery-3.1.1.min.js' %>
+    <%= javascript_include_tag 'jquery.raty.js' %>
 
     <!-- Tooltips -->
     <%= javascript_include_tag 'tether.min.js' %>
@@ -283,7 +283,7 @@
     <!-- MDB core JavaScript -->
     <%= javascript_include_tag 'mdb.min.js' %>
 
-    <%= javascript_include_tag 'jquery.raty.js' %>
+    
 
     <script>
         // SideNav init
