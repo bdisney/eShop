@@ -60,7 +60,7 @@ class Ability
       #Users
       can :crud, User
 
-      can :crud, Review
+      can [:create, :edit], Review
 
      
 
