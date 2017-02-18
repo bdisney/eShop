@@ -16,7 +16,7 @@
 //= require turbolinks
 //= require tether
 //= require toastr
-//= require_tree .
+
 
 
 
