@@ -18,5 +18,19 @@
 //= require toastr
 
 
+$(document).on('turbolinks:load', function() {
+  jQuery( document ).ready(function( $ ) {
+      $('#star-rating').raty({
+          path: '/assets',
+          scoreName: 'review[rating]'
+      });
+    });  
+
+});
+
+ 
+
+
+
 
 
