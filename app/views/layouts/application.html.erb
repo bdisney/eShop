@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
+
     <title>JUSTWatches</title>
 
     <!-- Font Awesome -->
@@ -29,6 +30,8 @@
         }
     
     </style>
+<%= javascript_include_tag 'jquery-3.1.1.min.js' %>
+     <%= javascript_include_tag 'jquery.raty.js', 'data-turbolinks-track' => :reload %>
 
 </head>
 
@@ -117,7 +120,7 @@
                 </li>
                 <% if can? :manage, User %>
                     <li class="nav-item">
-                        <a class="nav-link" href="<%= rails_admin_path %>"><i class="fa fa-dashboard"></i> <span class="hidden-sm-down">Dashboard</span></a>
+                        <a class="nav-link" data-no-turbolink="true" href="<%= rails_admin_path %>"><i class="fa fa-dashboard"></i> <span class="hidden-sm-down">Dashboard</span></a>
                     </li>
                 <% end %>
                 
@@ -273,8 +276,8 @@
     <!-- SCRIPTS -->
 
     <!-- JQuery -->
-    <%= javascript_include_tag 'jquery-3.1.1.min.js' %>
-    <%= javascript_include_tag 'jquery.raty.js' %>
+    
+   
 
     <!-- Tooltips -->
     <%= javascript_include_tag 'tether.min.js' %>
