@@ -193,7 +193,9 @@
                     <ul>
                         <li><a href="<%= news_index_path %>">News</a></li>
                         <li><a href="<%= edit_cart_path(@cart) %>">Your Cart</a></li>
+                        <% if user_signed_in? %>
                         <li><a href="<%= user_path(current_user) %>">Your Account</a></li>
+                        <% end %>
                     </ul>
                 </div>
                 <!--/.Second column-->
