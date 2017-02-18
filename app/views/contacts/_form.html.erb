@@ -1,16 +1,12 @@
+<% unless @contact.errors.empty? %>
+    <script type="text/javascript">
+        <% @contact.errors.full_messages.each do |msg| %>
+            toastr.error('<%= msg %>')
+        <% end %>
+    </script>
+<% end %>
+
 <%= form_for(@contact) do |f| %>
-  <% if @contact.errors.any? %>
-    <div class="alert alert-danger" role="alert">
-    <h4><%= pluralize(@contact.errors.count, "error") %> prohibited this message from being saved:</h4>
-
-      <ul>
-      <% @contact.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
 <!--Section: Contact v.2-->
 <section class="section">
     <!--Section sescription-->
@@ -27,7 +23,7 @@
                     <div class="col-md-6">
                         <div class="md-form">
                             <div class="md-form">
-                                <input type="text" id="form41" class="form-control">
+                                <%= f.text_field :name,  class: "form-control"%>
                                 <label for="form41" class="">Your name</label>
                             </div>
                         </div>
@@ -49,7 +45,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="md-form">
-                            <input type="text" id="form51" class="form-control">
+                            <%= f.text_field :subject,  class: "form-control"%>
                             <label for="form51" class="">Subject</label>
                         </div>
                     </div>
@@ -73,9 +69,8 @@
             </form>
 
             <div class="center-on-small-only">
-             
-    <%= f.submit 'SEND', class: "btn btn-primary mdb-color lighten-1" %>
-  </div>
+                <button type="submit" class="btn btn-primary">send message</button>
+            </div>
         </div>
         <!--.First column-->
 
