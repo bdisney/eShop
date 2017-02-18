@@ -20,7 +20,11 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/new
   def new
-    @review = Review.new
+    if current_user.name?
+      @review = Review.new
+    else
+      redirect_to edit_user_path(current_user), notice: 'Before write review, enter your name please. Thank you!'
+    end
   end
 
   # GET /reviews/1/edit
