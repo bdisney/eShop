@@ -1,14 +1,13 @@
+<% unless @review.errors.empty? %>
+    <script type="text/javascript">
+        <% @review.errors.full_messages.each do |msg| %>
+            toastr.error('<%= msg %>')
+        <% end %>
+    </script>
+<% end %>
+
+
 <%= form_for([@product, @review]) do |f| %>
-  <% if @review.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
-      <ul>
-      <% @review.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
   <div class="form-group row">
     <i class="fa fa-star fa-4x" aria-hidden="true"></i>
     <div class="range-field" id='star-rating'>
