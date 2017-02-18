@@ -9,20 +9,20 @@
     </div>
     <!--First Row--> 
     <div class="row">
-        <!-- First column-->
-        <div class="col-md-4">
+        <!-- Cart-->
+        <div class="col-md-6">
             <!--Card-->
-            <div class="card hoverable" style="min-height: 400px">
+            <div class="card hoverable">
                 <!--Card image-->
                 <div class="view overlay hm-white-slight">
                     <img src="https://static.pexels.com/photos/291762/pexels-photo-291762.jpeg" class="img-fluid" alt="">
                     <a>
-                        <div class="mask waves-effect waves-light"></div>
+                        <%= link_to '', edit_cart_path(@cart), class: "mask waves-effect waves-light" %>
+                       
                     </a>
                 </div>
                 <!--/.Card image-->
-                   <!--Button-->
-                <a class="btn-floating btn-action" href="<%= edit_cart_path(@cart) %>"><i class="fa fa-chevron-right"></i></a>
+                
                 <!--Card content-->
                 <div class="card-block">
                   
@@ -40,58 +40,24 @@
             </div>
             <!--/.Card-->
         </div>
-        <!--/First column-->
+        <!--/Cart-->
 
         <br />
 
-        <!-- Second column-->  
-        <div class="col-md-4">
-            <!--Card-->
-            <div class="card  hoverable">
-                <!--Card image-->
-                <div class="view overlay hm-white-slight">
-                    <img src="https://static.pexels.com/photos/298864/pexels-photo-298864.jpeg" class="img-fluid" alt="">
-                    <a>
-                        <div class="mask waves-effect waves-light"></div>
-                    </a>
-                </div>
-                <!--/.Card image-->
-
-                   <!--Button-->
-                <a class="btn-floating btn-action" href="<%= edit_cart_path(@cart) %>"><i class="fa fa-chevron-right"></i></a>
-                <!--Card content-->
-                <div class="card-block">
-                  
-                    <!--Title-->
-                    <h4 class="card-title">Your wish list</h4>
-                    <hr>
-                    <!--Text-->
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-                <!--/.Card content-->
-            </div>
-            <!--/.Card Dark-->
-        </div>
-
-        <!--/Second column-->  
-
         <br />
 
-        <!--Third column-->  
-        <div class="col-md-4">
+        <!--Profile settings-->  
+        <div class="col-md-6">
             <!--Card-->
             <div class="card hoverable">
                 <!--Card image-->
                 <div class="view overlay hm-white-slight">
-                    <img src="https://images.pexels.com/photos/7101/wood-coffee-iphone-notebook.jpg?w=940&h=650&auto=compress&cs=tinysrgb" class="img-fluid" alt="">
+                    <img src="https://static.pexels.com/photos/8180/time-watch-theme-machines-gears.jpg" class="img-fluid" alt="">
                     <a>
-                        <div class="mask waves-effect waves-light"></div>
+                    <%= link_to '', edit_user_path(current_user), class: "mask waves-effect waves-light" %>
                     </a>
                 </div>
                 <!--/.Card image-->
-
-                <!--Button-->
-                <a class="btn-floating btn-action" href="<%= edit_user_path(current_user) %>"><i class="fa fa-chevron-right"></i></a>
 
                 <!--Card content-->
                 <div class="card-block">
@@ -99,13 +65,13 @@
                     <h4 class="card-title">Your profile details</h4>
                     <hr>
                     <!--Text-->
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p class="card-text">Edit your registration information</p>
                 </div>
                 <!--/.Card content-->
             </div>
             <!--/.Card-->
         </div>
-        <!--/Third column-->
+        <!--/Profile settings-->
     </div>
     <!--/First Row--> 
     <br /> 
@@ -152,7 +118,7 @@
                                         </ul>
                                     </td>
                                     <td><%= number_to_currency(recent_order.line_items.to_a.sum { |item| item.total_price }) %></td>
-                                    <td><span class="green-text"><%= recent_order.status %></span></td>
+                                    <td><span class="green-text"><%= recent_order.status.humanize %></span></td>
                                 </tr>
                                 <% end %>
                             </tbody>
@@ -205,7 +171,7 @@
                                     <td>
                                         <a class="blue-text" href="<%= product_path(review.product) %>"><i class="fa fa-eye"></i></a>
                                         <a class="teal-text" href="<%= edit_product_review_path(id: review.id, product_id: review.product.id) %>"><i class="fa fa-pencil"></i></a>
-                                        <a class="red-text"><i class="fa fa-times"></i></a></td>
+                                        </td>
                                 </tr>
                             <% end %>
                         </tbody>
