@@ -16,21 +16,14 @@
 //= require turbolinks
 //= require tether
 //= require toastr
-
+//= require_tree .
 
 $(document).on('turbolinks:load', function() {
-  jQuery( document ).ready(function( $ ) {
-      $('#star-rating').raty({
+    $('#star-rating').raty({
           path: '/assets',
           scoreName: 'review[rating]'
       });
-    });  
-
 });
-
- 
-
-
-
+  
 
 
