@@ -44,7 +44,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   
-   def sign_up_params
+  def sign_up_params
     params.require(:user).permit( :email, :password, :password_confirmation, )
   end
 
@@ -55,7 +55,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-     store_index_path(resource)
+     store_path(resource)
   end
 
   def after_update_path_for(resource)
