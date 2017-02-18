@@ -1,4 +1,7 @@
 <div class="container">
+    <div class="divider-new">
+        <h2 class="h2-responsive">Edit your details</h2>
+    </div>
     <% if @user.errors.any? %>
         <div class="alert alert-danger" role="alert">
             <h4><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h4>
@@ -13,9 +16,6 @@
 <%= form_for(@current_user) do |f| %>
 
 <section class="section">
-
-    <!--Section heading-->
-    <h1 class="section-heading">Edit your details</h1>
     <!--Section sescription-->
     <p class="section-description mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur accusamus veniam. Quia, minima?</p>
 
@@ -92,7 +92,8 @@
             <ul class="text-center">
                 <li>
                     <a class="media waves-light flex-center">
-                        <img class="rounded-circle" src="http://mdbootstrap.com/wp-content/uploads/2015/10/team-avatar-1.jpg" alt="Generic placeholder image">
+                    <i class="fa fa-user-secret fa-5x" aria-hidden="true"></i>
+                        <img class="rounded-circle" src="" alt="">
                     </a>
                 </li>
                 <li>
