@@ -44,6 +44,7 @@ class ReviewsController < ApplicationController
         format.json { render :show, status: :created, location: @review }
       else
         format.html { render :new }
+        format.js {flash.now[:notice] = "Here is my flash notice" }
         format.json { render json: @review.errors, status: :unprocessable_entity }
       end
     end

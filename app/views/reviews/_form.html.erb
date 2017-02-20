@@ -1,13 +1,12 @@
-<% unless @review.errors.empty? %>
-    <script type="text/javascript">
-        <% @review.errors.full_messages.each do |msg| %>
-            toastr.error('<%= msg %>')
-        <% end %>
-    </script>
-<% end %>
+ <div id="flash">
+ <% if notice.present? %>
+    <%= render partial: "shared/notice_banner" %>
+  <% end %>
+</div>
 
 
-<%= form_for([@product, @review]) do |f| %>
+
+<%= form_for([@product, @review], remote: true) do |f| %>
   <div class="form-group row">
     <i class="fa fa-star fa-4x" aria-hidden="true"></i>
     <div class="range-field" id='star-rating'>
@@ -31,10 +30,13 @@
 <% end %>
 
 <script>
-    jQuery( document ).ready(function( $ ) {
+    $(document).on('turbolinks:load', function() {
+ 
       $('#star-rating').raty({
           path: '/assets',
           scoreName: 'review[rating]'
       });
     });  
+
+
 </script>
