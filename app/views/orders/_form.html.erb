@@ -1,18 +1,16 @@
-<%= form_for(@order) do |f| %>
-  <% if @order.errors.any? %>
-    <div class="alert alert-danger" role="alert">
-      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this product from being saved:</h2ß>
-      <ul>
-          <% @order.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-          <% end %>
-      </ul>
-    </div>
+ <div id="flash">
+ <% if notice.present? %>
+    <%= render partial: "shared/notice_banner", :object => @order %>
   <% end %>
+</div>
+
+
+<%= form_for(@order, remote: true) do |f| %>
+ 
   <div class="container">
       <div class="row">
           <div class="col-lg-12">
-              <div class="md-form form-group">
+              <div class="md-form form-group" id="order_form">
                   <br />
                   <div class="md-form">
                       <i class="fa  fa-user prefix"></i>
@@ -46,7 +44,11 @@
         $('.mdb-select').material_select();
     });
 </script>
-
+<script>
+document.addEventListener("turbolinks:before-cache", function() {
+  // ...
+})
+</script>
 
 
 
