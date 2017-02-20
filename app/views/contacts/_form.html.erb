@@ -1,12 +1,10 @@
-<% unless @contact.errors.empty? %>
-    <script type="text/javascript">
-        <% @contact.errors.full_messages.each do |msg| %>
-            toastr.error('<%= msg %>')
-        <% end %>
-    </script>
-<% end %>
+<div id="flash">
+  <% if notice.present? %>
+    <%= render partial: "shared/notice_banner", :object => @contact %>
+  <% end %>
+</div>
 
-<%= form_for(@contact) do |f| %>
+<%= form_for(@contact, remote: true) do |f| %>
 <!--Section: Contact v.2-->
 <section class="section">
     <!--Section sescription-->

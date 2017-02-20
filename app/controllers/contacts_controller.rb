@@ -39,7 +39,7 @@ class ContactsController < ApplicationController
         format.json { render :show, status: :created, location: @contact }
       else
         format.html { render :new }
-
+        format.js {flash.now[:notice] = "Here is my flash notice" }
         format.json { render json: @contact.errors, status: :unprocessable_entity }
       end
     end
