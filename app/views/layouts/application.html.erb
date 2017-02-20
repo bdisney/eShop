@@ -109,7 +109,7 @@
             <ul class="nav navbar-nav nav-flex-icons ml-auto">
             <% if current_or_guest_user %>    
                 <li class="nav-item">
-                    <a class="nav-link" href="<%= edit_cart_path(@cart) %>"> <span class="badge red z-depth-1" id="badge"><%= render 'carts/badge' %> 
+                    <a class="nav-link" href="<%= edit_cart_path(@cart) %>"> <span class="badge red z-depth-1" id="badge" data-turbolinks-permanent><%= render 'carts/badge' %> 
                    
                     </span> <i class="fa fa-shopping-cart"></i> <span class="hidden-sm-down">Cart</span></a>
 
