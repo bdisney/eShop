@@ -1,0 +1,6 @@
+<% if resource.save  %>
+    window.location.replace('<%= store_url %>');
+<% else %>
+    $("#flash").html('<%= j(render partial: "shared/notice_banner", locals: { object: @user }) %>');
+<% end %>
+
