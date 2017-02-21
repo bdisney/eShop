@@ -1,6 +1,6 @@
  <div id="flash">
  <% if notice.present? %>
-    <%= render partial: "shared/notice_banner", :object => @order %>
+    <%= render partial: "shared/notice_banner" %>
   <% end %>
 </div>
 
@@ -43,11 +43,6 @@
     $(document).ready(function() {
         $('.mdb-select').material_select();
     });
-</script>
-<script>
-document.addEventListener("turbolinks:before-cache", function() {
-  // ...
-})
 </script>
 
 
