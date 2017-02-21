@@ -1,4 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  respond_to :html, :js
   include CurrentCart
   before_action :set_cart
   skip_authorization_check
@@ -12,8 +13,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
    def create
-     super
-     current_or_guest_user
+
+    super 
+    current_or_guest_user
+
    end
 
   # GET /resource/edit
@@ -54,9 +57,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
    end
 
   # The path used after sign up.
+  
+
   def after_sign_up_path_for(resource)
-     store_path(resource)
-  end
+    store_path(resource)
+end
 
   def after_update_path_for(resource)
        user_path(resource)
