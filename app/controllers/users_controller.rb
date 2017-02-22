@@ -59,6 +59,7 @@ class UsersController < ApplicationController
       else
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.js {flash.now[:notice] = "Here is my flash notice" }
       end
     end
   end
