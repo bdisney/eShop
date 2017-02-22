@@ -30,8 +30,8 @@
         }
     
     </style>
-<%= javascript_include_tag 'jquery-3.1.1.min.js' %>
-     <%= javascript_include_tag 'jquery.raty.js', 'data-turbolinks-track' => :reload %>
+    <%= javascript_include_tag 'jquery-3.1.1.min.js' %>
+    <%= javascript_include_tag 'jquery.raty.js', 'data-turbolinks-track' => :reload %>
 
 </head>
 
@@ -126,13 +126,14 @@
                 
                 <% if user_signed_in? %>
                     <li class="nav-item">
-                        <a class="nav-link" href="<%= user_path(current_user) %>"><i class="fa fa-user"></i> <span class="hidden-sm-down">Profile</span></a>
+                        <a class="nav-link" href="<%= user_path(current_user) %>"><i class="fa fa-user"></i> <span class="hidden-sm-down">Profile </span></a>
                     </li>
                     <li class="nav-item">
-                        
-                        <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "nav-link" %>
+                        <%= link_to raw("<i class=\"fa fa-sign-out\"></i><span class=\"hidden-sm-down\">Log out</span>"), 
+                                                    destroy_user_session_path, 
+                                                    class: "nav-link",
+                                                    method: :delete %></a>
                     </li>
-                
                 <% else %>
                     <li class="nav-item">
                         <a class="nav-link" href="<%= new_user_session_path %>"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down"> Log in</span></a>
