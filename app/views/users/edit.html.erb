@@ -1,19 +1,14 @@
+ <div id="flash">
+
+</div>
+
 <div class="container">
     <div class="divider-new">
         <h2 class="h2-responsive">Edit your details</h2>
     </div>
-    <% if @user.errors.any? %>
-        <div class="alert alert-danger" role="alert">
-            <h4><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h4>
-            <ul>
-                <% @user.errors.full_messages.each do |message| %>
-                    <li><%= message %></li>
-                <% end %>
-            </ul>
-        </div>
-    <% end %>
+   
 
-<%= form_for(@current_user) do |f| %>
+<%= form_for(@current_user, remote: true) do |f| %>
 
 <section class="section">
     <!--Section sescription-->
@@ -116,10 +111,10 @@
     <div class="row">
         <div class="col-md-12 flex-center">
             <div class="center-on-small-only ">
-                <%= f.submit 'UPDATE', class: "btn btn-outline-primary btn-rounded waves-effect btn-sm" %>
+                <%= f.submit 'UPDATE', class: "btn btn-primary waves-effect btn-sm" %>
             </div>
             <div class="center-on-small-only ">
-                <%= button_to "CANCEL MY ACCOUNT",  user_registration_path, class: "btn btn-outline-danger btn-rounded waves-effect btn-sm", data: { confirm: "Are you sure?" }, method: :delete %>
+                <%= button_to "CANCEL MY ACCOUNT",  user_registration_path, class: "btn btn-danger waves-effect btn-sm", data: { confirm: "Are you sure?" }, method: :delete %>
             </div>
         </div>
     </div>
