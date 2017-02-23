@@ -13,14 +13,10 @@ Rails.application.routes.draw do
 
   resources :news
   resources :contacts
-#  controller :sessions do
-#    get 'login' => :new
-#    post 'login' => :create
-#    delete 'logout' => :destroy
-#  end
   
   get '/about' => 'pages#about'
   get '/faq' => 'pages#faq'
+  get '/delivery' => 'pages#delivery'
   
   resources :orders
 
