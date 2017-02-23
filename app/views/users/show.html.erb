@@ -12,7 +12,7 @@
         <!-- Cart-->
         <div class="col-md-6">
             <!--Card-->
-            <div class="card hoverable">
+            <div class="card card-cascade narrower hoverable">
                 <!--Card image-->
                 <div class="view overlay hm-white-slight">
                     <img src="https://static.pexels.com/photos/291762/pexels-photo-291762.jpeg" class="img-fluid" alt="">
@@ -49,7 +49,7 @@
         <!--Profile settings-->  
         <div class="col-md-6">
             <!--Card-->
-            <div class="card hoverable">
+            <div class="card card-cascade narrower hoverable">
                 <!--Card image-->
                 <div class="view overlay hm-white-slight">
                     <img src="https://static.pexels.com/photos/8180/time-watch-theme-machines-gears.jpg" class="img-fluid" alt="">
@@ -86,7 +86,7 @@
         <!--Recent orders--> 
         <div class="col-md-12">
             <!--Panel-->
-            <div class="card card-block">
+            <div class="card card-block hoverable" id="order_status">
                 <h4 class="card-title">Your Recent Orders</h4>
                 
                 <% if @user_orders.empty? %>
@@ -145,7 +145,7 @@
         <!--User reviews--> 
         <div class="col-md-12">
             <!--Panel-->
-            <div class="card card-block">
+            <div class="card card-block hoverable">
                 <h4 class="card-title">Your product reviews</h4>
                 <% if @user_reviews.empty? %>
                     <p class="text-muted">Here is empty, completely empty.</p>
