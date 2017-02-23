@@ -31,7 +31,7 @@
     
     </style>
     <%= javascript_include_tag 'jquery-3.1.1.min.js' %>
-    <%= javascript_include_tag 'jquery.raty.js', 'data-turbolinks-track' => :reload %>
+    <%= javascript_include_tag 'jquery.raty.js' %>
 
 </head>
 
@@ -45,26 +45,21 @@
             <!-- Logo -->
             <li>
                 <div class="logo-wrapper waves-light">
-                    <a href="#"><img src="" class="img-fluid flex-center"></a>
+                    <a href="/">
+                        <div class="flex-center">
+                           <p id="icon" class="font-weight-bold flex-center" style="text-shadow: rgb(48, 117, 165) 0px 0px 0px; font-size: 90px; color: rgb(20, 146, 255); height: 150px; width: 150px; line-height: 150px; border-radius: 0%; text-align: center; background-color: none;"> JW </p> 
+                        </div>
+                    </a>
                 </div>
+                <hr>
             </li>
             <!--/. Logo -->
-            <!--Social-->
-            <li>
-                <ul class="social">
-                    <li><a class="icons-sm fb-ic"><i class="fa fa-facebook"> </i></a></li>
-                    <li><a class="icons-sm pin-ic"><i class="fa fa-pinterest"> </i></a></li>
-                    <li><a class="icons-sm gplus-ic"><i class="fa fa-google-plus"> </i></a></li>
-                    <li><a class="icons-sm tw-ic"><i class="fa fa-twitter"> </i></a></li>
-                </ul>
-            </li>
-            <!--/Social-->
          
             <!-- Side navigation links -->
 
             <li>
                 <ul class="collapsible collapsible-accordion">
-                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-heart"></i> Catalogue<i class="fa fa-angle-down rotate-icon"></i></a>
+                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-heart"></i>Catalogue<i class="fa fa-angle-down rotate-icon"></i></a>
                     <% Category.all.find_each do |category| %>
                         <div class="collapsible-body">
                             <ul>
@@ -85,6 +80,10 @@
                     </li>
                     <li><a class="collapsible-header waves-effect arrow-r" href="<%= faq_path %>"><i class="fa  fa-book"></i> Questions?</a>
                     </li>
+                    <li><a class="collapsible-header waves-effect arrow-r" href="<%= delivery_path %>"><i class="fa  fa-automobile"></i> Delivery</a>
+                    </li>
+
+
                 </ul>
 
             </li>
@@ -109,7 +108,7 @@
             <ul class="nav navbar-nav nav-flex-icons ml-auto">
             <% if current_or_guest_user %>    
                 <li class="nav-item">
-                    <a class="nav-link" href="<%= edit_cart_path(@cart) %>"> <span class="badge red z-depth-1" id="badge" data-turbolinks-permanent><%= render 'carts/badge' %> 
+                    <a class="nav-link" href="<%= edit_cart_path(@cart) %>"> <span class="badge red z-depth-1" id="badge"><%= render 'carts/badge' %> 
                    
                     </span> <i class="fa fa-shopping-cart"></i> <span class="hidden-sm-down">Cart</span></a>
 
@@ -210,9 +209,10 @@
                 <div class="col-md-2">
                     <h5 class="title">DELIVERY</h5>
                     <ul>
-                        <li><a href="#!">Store Delivery</a></li>
-                        <li><a href="#!">Delivery Terms & Conditions</a></li>
-                      
+                        <li><a href="<%= delivery_path %>">Delivery Terms & Conditions</a></li>
+                        <li>
+                            <a href="<%= user_path(current_or_guest_user) %>#order_status">Order status</a>
+                        </li>
                     </ul>
                 </div>
                 <!--/.Third column-->
@@ -250,13 +250,12 @@
         <!--Social buttons-->
         <div class="social-section wow fadeIn" data-wow-delay="0.3s">
             <ul>
-                <li><a href="https://www.facebook.com/" target="_blank" class="btn-floating btn-small btn-fb"><i class="fa fa-facebook"> </i></a></li>
-                <li><a href="https://www.twitter.com/" target="_blank" class="btn-floating btn-small btn-tw"><i class="fa fa-twitter"> </i></a></li>
-                <li><a href="https://plus.google.com" target="_blank" class="btn-floating btn-small btn-gplus"><i class="fa fa-google-plus"> </i></a></li>
-                <li><a href="https://www.linkedin.com" target="_blank" class="btn-floating btn-small btn-li"><i class="fa fa-linkedin"> </i></a></li>
-                <li><a  href="https://github.com/bdisney" class="btn-floating btn-small btn-git"><i class="fa fa-github"> </i></a></li>
-                <li><a href="https://www.pinterest.com" target="_blank" class="btn-floating btn-small btn-pin"><i class="fa fa-pinterest"> </i></a></li>
-                <li><a href="https://www.instagram.com" target="_blank" class="btn-floating btn-small btn-ins"><i class="fa fa-instagram"> </i></a></li>
+                <li>
+                    <a href=""><button type="button" class="btn btn-li"><i class="fa fa-linkedin left"></i> Linkedin</button></a>
+                </li>
+                <li>
+                    <a href="https://github.com/bdisney"><button type="button" class="btn btn-email"><i class="fa fa-github left"></i> Github</button></a>
+                </li>
             </ul>
         </div>
         <!--/.Social buttons-->
@@ -264,8 +263,7 @@
         <!--Copyright-->
         <div class="footer-copyright">
             <div class="container-fluid">
-                2017 <a href="https://github.com/bdisney"> bdisney </a>
-
+                <p>2017 bdisney </p> 
             </div>
         </div>
         <!--/.Copyright-->
