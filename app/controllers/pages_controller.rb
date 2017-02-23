@@ -11,9 +11,11 @@ class PagesController < ApplicationController
   def faq
     @cart = current_cart
   end
-    
- 
 
+  def delivery
+    @cart = current_cart
+  end
+    
   def show
     if valid_page?
       render template: "pages/#{params[:page]}"
