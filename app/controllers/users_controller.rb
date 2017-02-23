@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     if user_signed_in?
-      @user_orders = Order.where(user_id: current_user.id)
+      @user_orders = Order.where(user_id: current_user.id).order('created_at DESC' )
       @user_reviews = Review.where(user_id: current_user.id)
     else
       respond_to do |format|
