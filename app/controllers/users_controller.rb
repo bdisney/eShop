@@ -18,9 +18,14 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-  @user_orders = Order.where(user_id: current_user.id)
-  @user_reviews = Review.where(user_id: current_user.id)
-
+    if user_signed_in?
+      @user_orders = Order.where(user_id: current_user.id)
+      @user_reviews = Review.where(user_id: current_user.id)
+    else
+      respond_to do |format|
+        format.html {redirect_to new_user_session_path, notice: "You should to be logged in"}
+      end
+    end
   end
 
   # GET /users/new
