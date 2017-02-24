@@ -1,60 +1,46 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
-
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-  </head>
-
-  <body>
-    <div class="container">
+<div class="container">
     <br />
-      <h4>Hello, <%= @order.name %>!</h4>
-      <br />
-      <p class="text">Thank you for your recent order( # <%= @order.id %>) from Just Watches.</p>
-      <p>You ordered the following items:</p>
-      <div class="table">
+    <h4>Hello, <%= @order.name %>!</h4>
+    <br />
+    <p class="text">Thank you for your recent order( # <%= @order.id %>) from Just Watches.</p>
+    <p>You ordered the following items:</p>
+    <div class="table">
         <table class="table product-table">
-          <thead class="thead-inverse">
-            <tr>
-              <th>#</th>
-              <th>Product</th>
-              <th>Price</th>
-              <th>Qty</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <% @order.line_items.each_with_index do |item, index| %>
-                <td><%= index + 1 %></td>
-                <td><%= item.product.title %></td>
-                <td><%= item.product.price %></td>
-                <td><%= item.quantity %></td>
-            </tr>
-            <% end %>
-            <tr>
-              <td></td>
-              <td></td>
-              <td><h4><strong>Total: </strong></h4></td>
+            <thead class="thead-inverse">
+                <tr>
+                  <th>#</th>
+                  <th>Product</th>
+                  <th>Price</th>
+                  <th>Qty</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <% @order.line_items.each_with_index do |item, index| %>
+                        <td><%= index + 1 %></td>
+                        <td><%= item.product.title %></td>
+                        <td><%= item.product.price %></td>
+                        <td><%= item.quantity %></td>
+                </tr>
+                    <% end %>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><h4><strong>Total: </strong></h4></td>
 
-              <td><h4><strong><%= number_to_currency(@order.line_items.to_a.sum { |item| item.total_price }) %></strong></h4></td>
-              </tr>
-          </tbody>
+                    <td><h4><strong><%= number_to_currency(@order.line_items.to_a.sum { |item| item.total_price }) %></strong></h4></td>
+                </tr>
+            </tbody>
         </table>
-      </div>
-      <p>We'll call you as soon as possible to confirm your order and discuss details.</p>
-      <div class="text-right text-muted">
+    </div>
+    <p>We'll call you as soon as possible to confirm your order and discuss details.</p>
+    <div class="text-right text-muted">
         <p><strong>Have a nice day!</strong></p>
         <p><strong><%= link_to 'Just Watches team', store_url %></strong></p>
-      </div>
+    </div>
 
-      <hr>
+    <hr>
 
-      <p class="text-muted" style="font-size: 12px;">This is an automatically generated message to confirm receipt of your order via the Internet. You do not need to reply to this e-mail, but you may wish to save it for your records.</p>
-      </div>
-  </body>
-</html>
+    <p class="text-muted" style="font-size: 12px;">This is an automatically generated message to confirm receipt of your order via the Internet. You do not need to reply to this e-mail, but you may wish to save it for your records.</p>
+</div>
+
