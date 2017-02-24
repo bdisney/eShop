@@ -35,7 +35,7 @@ class ContactsController < ApplicationController
     respond_to do |format|
       if @contact.save
 
-        ContactMailer.received(current_or_guest_user).deliver
+        ContactMailer.received(@contact).deliver
 
         format.html { redirect_to store_url, notice: 'Thank you for your message!' }
         format.json { render :show, status: :created, location: @contact }
