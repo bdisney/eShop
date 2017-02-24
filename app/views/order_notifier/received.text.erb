@@ -1,9 +1,20 @@
-Dear <%= @order.name %>
+Hello, <%= @order.name %>!
  
-Thank you for your recent order from eShop.
+Thank you for your recent order( # <%= @order.id %>) from Just Watches.
  
 You ordered the following items:
  
-<%= render @order.line_items %>
- 
-We'll send you a separate e-mail when your order ships.
+<% @order.line_items.each do |item| %>
+<%= item.product.title %> * <%= item.quantity %>
+<% end %>
+
+Total price: <%= number_to_currency(@order.line_items.to_a.sum { |item| item.total_price }) %>
+
+We'll call you as soon as possible to confirm your order and discuss details.
+
+
+Have a nice day!
+Just Watches team
+
+
+This is an automatically generated message to confirm receipt of your order via the Internet. You do not need to reply to this e-mail, but you may wish to save it for your records.

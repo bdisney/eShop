@@ -3,12 +3,7 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Welcome to Just Watches, <%= @order.name %>!</title>
-    <!--
-    The style block is collapsed on page load to save you some scrolling.
-    Postmark automatically inlines all CSS properties for maximum email client
-    compatibility. You can just update styles here, and Postmark does the rest.
-    -->
+    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
 
     <!-- Bootstrap core CSS -->
@@ -16,14 +11,50 @@
   </head>
 
   <body>
+    <div class="container">
+    <br />
+      <h4>Hello, <%= @order.name %>!</h4>
+      <br />
+      <p class="text">Thank you for your recent order( # <%= @order.id %>) from Just Watches.</p>
+      <p>You ordered the following items:</p>
+      <div class="table">
+        <table class="table product-table">
+          <thead class="thead-inverse">
+            <tr>
+              <th>#</th>
+              <th>Product</th>
+              <th>Price</th>
+              <th>Qty</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <% @order.line_items.each_with_index do |item, index| %>
+                <td><%= index + 1 %></td>
+                <td><%= item.product.title %></td>
+                <td><%= item.product.price %></td>
+                <td><%= item.quantity %></td>
+            </tr>
+            <% end %>
+            <tr>
+              <td></td>
+              <td></td>
+              <td><h4><strong>Total: </strong></h4></td>
 
-</html>
-    <p class="text">Thank you for your recent order from Just Watches.</span>
+              <td><h4><strong><%= number_to_currency(@order.line_items.to_a.sum { |item| item.total_price }) %></strong></h4></td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>We'll call you as soon as possible to confirm your order and discuss details.</p>
+      <div class="text-right text-muted">
+        <p><strong>Have a nice day!</strong></p>
+        <p><strong><%= link_to 'Just Watches team', store_url %></strong></p>
+      </div>
 
-      <p>
-        You ordered the following items:
-      </p>
-      <%= render @order.line_items %>
-      <p>We'll send you a separate e-mail when your order ships.</p>
-</body>
+      <hr>
+
+      <p class="text-muted" style="font-size: 12px;">This is an automatically generated message to confirm receipt of your order via the Internet. You do not need to reply to this e-mail, but you may wish to save it for your records.</p>
+      </div>
+  </body>
 </html>
