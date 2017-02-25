@@ -9,7 +9,7 @@ class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.json
   def index
-    @contacts = Contact.order('created_at desc')
+    redirect_to store_url
   end
 
   # GET /contacts/1

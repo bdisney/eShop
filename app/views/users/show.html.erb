@@ -17,7 +17,7 @@
                 <div class="view overlay hm-white-slight">
                     <img src="https://static.pexels.com/photos/291762/pexels-photo-291762.jpeg" class="img-fluid" alt="">
                     <a>
-                        <%= link_to '', edit_cart_path(@cart), class: "mask waves-effect waves-light" %>
+                        <%= link_to '', edit_cart_path(@cart), class: "mask waves-effect waves-light", rel: "nofollow" %>
                        
                     </a>
                 </div>
@@ -54,7 +54,7 @@
                 <div class="view overlay hm-white-slight">
                     <img src="https://static.pexels.com/photos/8180/time-watch-theme-machines-gears.jpg" class="img-fluid" alt="">
                     <a>
-                    <%= link_to '', edit_user_path(current_user), class: "mask waves-effect waves-light" %>
+                    <%= link_to '', edit_user_path(current_user), class: "mask waves-effect waves-light", rel: "nofollow" %>
                     </a>
                 </div>
                 <!--/.Card image-->
@@ -170,7 +170,7 @@
                                     <td><%= review.rating %></td>
                                     <td>
                                         <a class="blue-text" href="<%= product_path(review.product) %>"><i class="fa fa-eye"></i></a>
-                                        <a class="teal-text" href="<%= edit_product_review_path(id: review.id, product_id: review.product.id) %>"><i class="fa fa-pencil"></i></a>
+                                        <a class="teal-text" href="<%= edit_product_review_path(id: review.id, product_id: review.product.id) %>" rel="nofollow"><i class="fa fa-pencil"></i></a>
                                         </td>
                                 </tr>
                             <% end %>

@@ -18,8 +18,8 @@
     <td>
         <span class="qty"><%= line_item.quantity %></span>
         <div class="btn-group" data-toggle="buttons">
-            <%= link_to '-', decrement_line_item_path(line_item), class: "btn btn-sm btn-primary btn-rounded", role: "button", remote: true %>
-            <%= link_to '+', increment_line_item_path(line_item), class: "btn btn-sm btn-primary btn-rounded", role: "button", remote: true %>
+            <%= link_to '-', decrement_line_item_path(line_item), class: "btn btn-sm btn-primary btn-rounded", role: "button", rel: "nofollow", remote: true %>
+            <%= link_to '+', increment_line_item_path(line_item), class: "btn btn-sm btn-primary btn-rounded", role: "button", rel: "nofollow", remote: true %>
         </div>
     </td>
  
@@ -27,6 +27,6 @@
         <%= number_to_currency(line_item.total_price) %>
     </td>
     <td>
-        <%= link_to 'X', line_item, class: "btn btn-sm btn-primary", :method => :delete %>
+        <%= link_to 'X', line_item, class: "btn btn-sm btn-primary", rel: "nofollow", :method => :delete %>
     </td>
 </tr>

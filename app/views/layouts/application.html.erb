@@ -106,36 +106,34 @@
             </div>
 
             <ul class="nav navbar-nav nav-flex-icons ml-auto">
-            <% if current_or_guest_user %>    
-                <li class="nav-item">
-                    <a class="nav-link" href="<%= edit_cart_path(@cart) %>"> <span class="badge red z-depth-1" id="badge"><%= render 'carts/badge' %> 
-                   
-                    </span> <i class="fa fa-shopping-cart"></i> <span class="hidden-sm-down">Cart</span></a>
-
-                </li>
-               <%end %>
+                <% if current_or_guest_user %>    
+                    <li class="nav-item">
+                        <a class="nav-link" href="<%= edit_cart_path(@cart) %>" rel="nofollow"> <span class="badge red z-depth-1" id="badge"><%= render 'carts/badge' %> 
+                        </span> <i class="fa fa-shopping-cart"></i> <span class="hidden-sm-down">Cart</span></a>
+                    </li>
+                <%end %>
                 <li class="nav-item">
                     <a class="nav-link" href="<%= new_contact_path %>"><i class="fa fa-envelope"></i> <span class="hidden-sm-down">Contact</span></a>
                 </li>
                 <% if can? :manage, User %>
                     <li class="nav-item">
-                        <a class="nav-link" data-no-turbolink="true" href="<%= rails_admin_path %>"><i class="fa fa-dashboard"></i> <span class="hidden-sm-down">Dashboard</span></a>
+                        <a class="nav-link" data-no-turbolink="true" href="<%= rails_admin_path %>" rel="nofollow"><i class="fa fa-dashboard"></i> <span class="hidden-sm-down">Dashboard</span></a>
                     </li>
                 <% end %>
-                
                 <% if user_signed_in? %>
                     <li class="nav-item">
-                        <a class="nav-link" href="<%= user_path(current_user) %>"><i class="fa fa-user"></i> <span class="hidden-sm-down">Profile </span></a>
+                        <a class="nav-link" href="<%= user_path(current_user) %>" rel="nofollow"><i class="fa fa-user"></i> <span class="hidden-sm-down">Profile </span></a>
                     </li>
                     <li class="nav-item">
                         <%= link_to raw("<i class=\"fa fa-sign-out\"></i><span class=\"hidden-sm-down\">Log out</span>"), 
                                                     destroy_user_session_path, 
                                                     class: "nav-link",
+                                                    rel: "nofollow",
                                                     method: :delete %></a>
                     </li>
                 <% else %>
                     <li class="nav-item">
-                        <a class="nav-link" href="<%= new_user_session_path %>"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down"> Log in</span></a>
+                        <a class="nav-link" href="<%= new_user_session_path %>" rel="nofollow"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down"> Log in</span></a>
                     </li>
                 <% end %>
                 </li>
@@ -195,9 +193,9 @@
                     <h5 class="title">USEFUL LINKS</h5>
                     <ul>
                         <li><a href="<%= news_index_path %>">News</a></li>
-                        <li><a href="<%= edit_cart_path(@cart) %>">Your Cart</a></li>
+                        <li><a href="<%= edit_cart_path(@cart) %>" rel="nofollow">Your Cart</a></li>
                         <% if user_signed_in? %>
-                        <li><a href="<%= user_path(current_user) %>">Your Account</a></li>
+                        <li><a href="<%= user_path(current_user) %>" rel="nofollow">Your Account</a></li>
                         <% end %>
                     </ul>
                 </div>
@@ -211,7 +209,7 @@
                     <ul>
                         <li><a href="<%= delivery_path %>">Delivery Terms & Conditions</a></li>
                         <li>
-                            <a href="<%= user_path(current_or_guest_user) %>#order_status">Order status</a>
+                            <a href="<%= user_path(current_or_guest_user) %>#order_status" rel="nofollow">Order status</a>
                         </li>
                     </ul>
                 </div>
@@ -240,7 +238,7 @@
             <ul>
                 <li>
                     <h5>Register for free</h5></li>
-                <li><a href="<%= new_user_registration_path %>" class="btn btn-danger">Sign up!</a></li>
+                <li><a href="<%= new_user_registration_path %>" rel="nofollow" class="btn btn-danger">Sign up!</a></li>
             </ul>
         </div>
         <!--/.Call to action-->
