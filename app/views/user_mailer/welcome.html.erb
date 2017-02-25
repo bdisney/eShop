@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Welcome to Just Watches!</h3>
+      <p>Thanks for signing up!</p>
+      <p>Your login: <%= @user.email %>.</p>
+      <hr>
+      <h4 class="text-muted">Orders</h4>
+      <p>Need to check the status of your order? Go to <%= link_to '"Profile"', user_path(@user) %> to track.</p>
+      <h4 class="text-muted">Settings</h4>
+      <p>Need to change your registation information? Go to <%= link_to 'Profile/Settings.', edit_user_path(@user) %></p>
+      <hr>
+      <p>Let the fun begin.</p>
+      <a class="btn btn-outline-success btn-rounded waves-effect" href="<%= store_url %>">Shop now <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+    </div>
+  </div>
+    <div class="text-right text-muted">
+        <p><strong>Have a nice day!</strong></p>
+        <p><strong><%= link_to 'Just Watches team', store_url %></strong></p>
+    </div>
+
+    <hr>
+
+    <p class="text-muted" style="font-size: 12px;">This is an automatically generated message to confirm receipt of your order via the Internet. You do not need to reply to this e-mail, but you may wish to save it for your records.</p>
+</div>
