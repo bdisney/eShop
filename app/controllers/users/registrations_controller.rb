@@ -14,7 +14,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
    def create
 
-    super 
+    super
+    if @user.persisted?
+      UserMailer.welcome(@user).deliver
+    end 
     current_or_guest_user
 
    end
