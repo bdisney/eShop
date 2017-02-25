@@ -3,12 +3,12 @@
     <div class="col-md-12">
       <h3>Welcome to Just Watches!</h3>
       <p>Thanks for signing up!</p>
-      <p>Your login: <%= @user.email %>.</p>
+      <p>Your login: <strong><%= @user.email %></strong></p>
       <hr>
       <h4 class="text-muted">Orders</h4>
-      <p>Need to check the status of your order? Go to <%= link_to '"Profile"', user_path(@user) %> to track.</p>
+      <p>Need to check the status of your order? Go to <span class="text-muted"><strong>"Profile"</strong></span> to track.</p>
       <h4 class="text-muted">Settings</h4>
-      <p>Need to change your registation information? Go to <%= link_to 'Profile/Settings.', edit_user_path(@user) %></p>
+      <p>Need to change your registation information? Go to <span class="text-muted"><strong>Profile/Settings</strong></span>.</p>
       <hr>
       <p>Let the fun begin.</p>
       <a class="btn btn-outline-success btn-rounded waves-effect" href="<%= store_url %>">Shop now <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
