@@ -9,6 +9,12 @@ Rails.application.routes.draw do
       registrations: 'users/registrations'
   }
 
+devise_scope :user do
+  get '/reset_password' => "users/passwords#new", :as => :reset_password
+  get '/new_password' => "users/passwords#edit", :as => :new_password
+  post '/send_email' => 'users/passwords#create', :as => :create_password
+end
+
   resources :users, only: [:show, :edit, :update]
 
   resources :news
