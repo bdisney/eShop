@@ -12,6 +12,8 @@ RailsAdmin.config do |config|
   # end
   # config.current_user_method(&:current_user)
 
+  config.main_app_name = ["JUST WATCHES"]
+
   ## == Cancan ==
   config.authorize_with :cancan
 
